@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv6hgliu857hb"]
+
+[ext_resource type="PackedScene" uid="uid://c1cjijlndstf0" path="res://assets/models_and_materials/dining_table.glb" id="1_xgn2g"]
+[ext_resource type="Material" uid="uid://dqspfmvguxat5" path="res://assets/models_and_materials/dining_table.material" id="2_nhp8g"]
+
+[node name="dining_table" instance=ExtResource("1_xgn2g")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_nhp8g")

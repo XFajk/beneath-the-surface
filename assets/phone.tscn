@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbrmrwi44hin1"]
+
+[ext_resource type="PackedScene" uid="uid://c6hwxcw4xhaon" path="res://assets/models_and_materials/phone.glb" id="1_35ers"]
+[ext_resource type="Material" uid="uid://b0wayiwuql60w" path="res://assets/models_and_materials/phone.material" id="2_42dji"]
+
+[node name="phone" instance=ExtResource("1_35ers")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_42dji")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://df2awwrggpwmj"]
+
+[ext_resource type="PackedScene" uid="uid://ceh47ora50mxc" path="res://assets/models_and_materials/bed.glb" id="1_jmw0i"]
+[ext_resource type="Material" uid="uid://dm1tedc8oc0co" path="res://assets/models_and_materials/bed.material" id="2_b4owf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lslg7"]
+albedo_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6nk6"]
+albedo_color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wt85n"]
+albedo_color = Color(0.584314, 0.584314, 0.584314, 1)
+
+[node name="bed" instance=ExtResource("1_jmw0i")]
+
+[node name="base" parent="." index="0"]
+material_override = ExtResource("2_b4owf")
+
+[node name="pilow2" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_lslg7")
+
+[node name="pillow" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_d6nk6")
+
+[node name="blanket" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_wt85n")

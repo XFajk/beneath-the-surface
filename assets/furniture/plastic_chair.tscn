@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq4bpjf24h2bk"]
+
+[ext_resource type="PackedScene" uid="uid://dbh8avknn5akd" path="res://assets/models_and_materials/plastic_chair.glb" id="1_ir36q"]
+[ext_resource type="Material" uid="uid://da3ueq4whufc2" path="res://assets/models_and_materials/plastic_chair.material" id="2_22syo"]
+
+[node name="plastic_chair" instance=ExtResource("1_ir36q")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_22syo")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhrh4fi20xl6o"]
+
+[ext_resource type="PackedScene" uid="uid://b2cjw3p4hw17p" path="res://assets/models_and_materials/kitchen_shelf.glb" id="1_78coj"]
+[ext_resource type="Material" uid="uid://ccpi7msep1soq" path="res://assets/models_and_materials/kitchen_shelf.material" id="2_x3o8n"]
+[ext_resource type="Material" uid="uid://bosvc0ea5s0ho" path="res://assets/models_and_materials/kitchen_shelf_door.material" id="3_u5pcd"]
+
+[node name="kitchen_shelf" instance=ExtResource("1_78coj")]
+
+[node name="kitchen_shelf" parent="." index="0"]
+material_override = ExtResource("2_x3o8n")
+
+[node name="door" parent="Empty" index="0"]
+material_override = ExtResource("3_u5pcd")
+
+[node name="door_001" parent="Empty_001" index="0"]
+material_override = ExtResource("3_u5pcd")
+
+[node name="door_002" parent="Empty_002" index="0"]
+material_override = ExtResource("3_u5pcd")
+
+[node name="door_003" parent="Empty_003" index="0"]
+material_override = ExtResource("3_u5pcd")

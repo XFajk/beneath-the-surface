@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmhv44po64pyn"]
+
+[ext_resource type="PackedScene" uid="uid://b85mypgo5fv6n" path="res://assets/models_and_materials/washing_machine.glb" id="1_5q4hi"]
+[ext_resource type="Texture2D" uid="uid://cfr0fmsehc810" path="res://assets/textures/washing_machine.png" id="2_q15n7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okk4a"]
+albedo_texture = ExtResource("2_q15n7")
+texture_filter = 2
+
+[node name="washing_machine" instance=ExtResource("1_5q4hi")]
+
+[node name="Cube" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_okk4a")

@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2cnebhg4cik3"]
+
+[ext_resource type="PackedScene" uid="uid://crbsr60t6r1m7" path="res://assets/entities/Player.tscn" id="1_d5rw3"]
+[ext_resource type="PackedScene" uid="uid://bhee1m87cr60r" path="res://assets/furniture/coffe_table.tscn" id="2_hxqk0"]
+[ext_resource type="PackedScene" uid="uid://dbrmrwi44hin1" path="res://assets/phone.tscn" id="3_pbs85"]
+[ext_resource type="PackedScene" uid="uid://bbqekuufjshr1" path="res://assets/console.tscn" id="4_lwe3y"]
+[ext_resource type="PackedScene" uid="uid://bsa7gwjdue2fm" path="res://assets/furniture/frezer.tscn" id="5_vo14s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2jjm"]
+albedo_color = Color(0.192157, 0.545098, 0.121569, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n5ghq"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f8s51"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o01sa"]
+albedo_color = Color(0.74902, 0, 0.188235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uiw5c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1doku"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(12.5, 2.12796e-09, 0, -2.30359e-07, 0.0866025, -6.475, -1.32998e-07, 0.05, 11.215, -0.0528002, 3.15, -12.1)
+material_override = SubResource("StandardMaterial3D_a2jjm")
+mesh = SubResource("BoxMesh_n5ghq")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_f8s51")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(12.528, 4.59918e-09, 0, -2.6448e-07, 0.1, 0, 0, 0, 12.95, -0.1, 0, 0)
+material_override = SubResource("StandardMaterial3D_a2jjm")
+mesh = SubResource("BoxMesh_n5ghq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_f8s51")
+
+[node name="Player" parent="." instance=ExtResource("1_d5rw3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.3, 1, 2.9)
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00800014, 1.956, -3.242)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RigidBody3D2"]
+material_override = SubResource("StandardMaterial3D_o01sa")
+mesh = SubResource("BoxMesh_uiw5c")
+skeleton = NodePath("../../RigidBody3D/MeshInstance3D2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("BoxShape3D_1doku")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.8, -3.1)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D"]
+material_override = SubResource("StandardMaterial3D_o01sa")
+mesh = SubResource("BoxMesh_uiw5c")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_1doku")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, -3.28021e-16, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -1.692, 13.156, 3.158)
+shadow_enabled = true
+shadow_opacity = 0.83
+
+[node name="coffe_table" parent="." instance=ExtResource("2_hxqk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 0.8, -0.4)
+
+[node name="phone" parent="." instance=ExtResource("3_pbs85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.35, 0.841888, -0.1)
+
+[node name="console" parent="." instance=ExtResource("4_lwe3y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.4, 0.871888, -0.5)
+
+[node name="frezer" parent="." instance=ExtResource("5_vo14s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55, 1, -1.8)

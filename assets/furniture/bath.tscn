@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://5ab8k7hakbmk"]
+
+[ext_resource type="PackedScene" uid="uid://bjb13fpkq58ep" path="res://assets/models_and_materials/bath.glb" id="1_6mw21"]
+[ext_resource type="Material" uid="uid://doam4nhcc77n2" path="res://assets/models_and_materials/bath.material" id="2_isje2"]
+
+[node name="bath" instance=ExtResource("1_6mw21")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_isje2")

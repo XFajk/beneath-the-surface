@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjnsx2ko3gns3"]
+
+[ext_resource type="PackedScene" uid="uid://bd6cdyy6qlvq8" path="res://assets/models_and_materials/sofa.glb" id="1_tlqrl"]
+[ext_resource type="Material" uid="uid://cc55c5yluku4p" path="res://assets/models_and_materials/sofa_base_skin.material" id="2_1s0xq"]
+[ext_resource type="Material" uid="uid://d3aioon5rfblc" path="res://assets/models_and_materials/sofa_skin.material" id="3_m5wj1"]
+[ext_resource type="Texture2D" uid="uid://cb1tl3lxvk28s" path="res://assets/textures/skin.png" id="4_a7eso"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_knw1a"]
+albedo_texture = ExtResource("4_a7eso")
+
+[node name="sofa" instance=ExtResource("1_tlqrl")]
+
+[node name="Base" parent="." index="0"]
+transform = Transform3D(-1, -3.25841e-07, 0, 3.25841e-07, -1, 0, 0, 0, 1, 0, 0.00203353, -5.85467e-05)
+material_override = ExtResource("2_1s0xq")
+
+[node name="Backrest" parent="Base" index="0"]
+material_override = ExtResource("2_1s0xq")
+
+[node name="Handrest_001" parent="Base" index="1"]
+material_override = ExtResource("2_1s0xq")
+
+[node name="Handrest_002" parent="Base" index="2"]
+material_override = ExtResource("2_1s0xq")
+
+[node name="Pilow" parent="Base" index="3"]
+material_override = ExtResource("3_m5wj1")
+
+[node name="Pilow_001" parent="Base/Pilow" index="0"]
+material_override = ExtResource("3_m5wj1")
+
+[node name="Pilow_002" parent="Base/Pilow" index="1"]
+material_override = ExtResource("3_m5wj1")
+
+[node name="Pilow_003" parent="Base/Pilow" index="2"]
+material_override = ExtResource("3_m5wj1")
+
+[node name="Pilow_004" parent="Base/Pilow" index="3"]
+material_override = SubResource("StandardMaterial3D_knw1a")
+
+[node name="Pilow_005" parent="Base/Pilow" index="4"]
+material_override = ExtResource("3_m5wj1")

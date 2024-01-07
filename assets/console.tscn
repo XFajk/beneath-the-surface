@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbqekuufjshr1"]
+
+[ext_resource type="PackedScene" uid="uid://bc2m8w23lpo68" path="res://assets/models_and_materials/console.glb" id="1_lg0es"]
+[ext_resource type="Material" uid="uid://bd0et86i3c7l7" path="res://assets/models_and_materials/console.material" id="2_xu0ns"]
+
+[node name="console" instance=ExtResource("1_lg0es")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_xu0ns")
