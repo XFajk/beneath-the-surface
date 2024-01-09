@@ -6,7 +6,7 @@ func _physics_process(delta):
 	if interacter != null:
 		interact()
 
-func start_interact(new_interacter: Object) -> bool:
+func start_interaction(new_interacter: Object) -> bool:
 	if Input.is_action_pressed("pick_up"):
 		interacter = new_interacter
 		return true

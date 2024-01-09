@@ -30,7 +30,7 @@ fov = 90.0
 
 [node name="InteractionRay" type="RayCast3D" parent="Head/Eyes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-target_position = Vector3(0, 0, -2)
+target_position = Vector3(0, 0, -1.9)
 
 [node name="PlayerUI" type="Control" parent="Head/Eyes"]
 layout_mode = 3

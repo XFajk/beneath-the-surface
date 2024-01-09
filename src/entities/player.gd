@@ -184,12 +184,12 @@ func apply_interactions() -> void:
 			cross_hair.scale = Vector2(0.1, 0.1)
 		return
 	
-	if interaction_ray.get_collider().has_method("start_interact"):
+	if interaction_ray.get_collider().has_method("start_interaction"):
 		if not in_interaction:
 			if interactible == null:
 				cross_hair.scale = Vector2(0.1, 0.1)
 				interactible = raycasted_object
-			in_interaction = interactible.start_interact(self)
+			in_interaction = interactible.start_interaction(self)
 			if not in_interaction:
 				interactible = null
 				return
