@@ -41,6 +41,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yt30l")
 
 [node name="coffe_table" type="StaticBody3D"]
+collision_mask = 3
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00668949, -5.96046e-08)

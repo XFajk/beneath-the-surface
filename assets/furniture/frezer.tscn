@@ -175,6 +175,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hv35r")
 
 [node name="frezer" type="StaticBody3D"]
+collision_mask = 3
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 material_override = ExtResource("2_q7fba")
@@ -186,7 +187,12 @@ shape = SubResource("ConcavePolygonShape3D_wa3ug")
 
 [node name="door" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302625, -0.50773, 0.335479)
+collision_mask = 3
 script = ExtResource("2_hflw6")
+tutorial_lable_pos = Vector3(0, -0.1, -0.6)
+enable_tutorial_lable = true
+locked = true
+lock_level = 1.0
 
 [node name="Cube_001" type="MeshInstance3D" parent="door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161089, 0.0366062, -0.335479)
@@ -207,21 +213,24 @@ mesh = SubResource("ArrayMesh_glngi")
 skeleton = NodePath("")
 
 [node name="door_001" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 7.98551e-09, 0, 1, 0, 1.5971e-08, 0, 1, 0.302625, 0.504029, 0.335479)
+transform = Transform3D(1, 0, 7.98551e-09, 0, 1, 0, 1.5971e-08, 0, 1, 0.302625, 0.446075, 0.335479)
+collision_mask = 3
 script = ExtResource("2_hflw6")
+tutorial_lable_pos = Vector3(0, -0.1, -0.6)
+enable_tutorial_lable = true
 
 [node name="Cube_002" type="MeshInstance3D" parent="door_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161089, -0.0335502, -0.335479)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161089, 0.0244039, -0.335479)
 material_override = ExtResource("3_6qhiq")
 mesh = SubResource("ArrayMesh_s7g2t")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161089, -0.0335502, -0.335479)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161089, 0.0244039, -0.335479)
 shape = SubResource("ConvexPolygonShape3D_goftc")
 
 [node name="Handle" type="Node3D" parent="door_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0973745, -0.0465647, -0.585479)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0973745, 0.0113894, -0.585479)
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="door_001/Handle"]
 material_override = ExtResource("4_a0uoh")

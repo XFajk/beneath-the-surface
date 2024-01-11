@@ -1,19 +1,56 @@
-[gd_scene load_steps=5 format=3 uid="uid://crbsr60t6r1m7"]
+[gd_scene load_steps=16 format=3 uid="uid://crbsr60t6r1m7"]
 
 [ext_resource type="Script" path="res://src/entities/player.gd" id="1_7dypm"]
 [ext_resource type="Texture2D" uid="uid://bj4n2cdjwge15" path="res://crosshair.svg" id="2_kanrg"]
+[ext_resource type="Script" path="res://src/sub_viewport_res_setter.gd" id="3_aq5rt"]
+[ext_resource type="Texture2D" uid="uid://c7tcfslg2mnje" path="res://assets/sprites/E.png" id="3_wd4en"]
+[ext_resource type="Texture2D" uid="uid://bbonv0wcj780o" path="res://assets/sprites/Mouse.png" id="4_m0tmw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bc8x3"]
 radius = 0.3
 height = 1.9
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glmdn"]
+bg_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imk2t"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n8ag"]
+bg_color = Color(0, 0, 0, 0.172549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ald7"]
+bg_color = Color(1, 0.407843, 0.337255, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ka62s"]
 radius = 0.3
 height = 1.9
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecie0"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_wd4en")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_utgws"]
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_euc5n"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("4_m0tmw")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_0xyj0"]
+size = Vector2(0.2, 0.2)
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_7dypm")
 acceleration = 7.0
+stamina_delition = 30.0
+stamina_regeneration = 10.0
+stamina_bar_blink_speed = 10.0
+stamina_bar_color_lerp_speed = 10.0
 player_crouch_heigh = 0.7
 head_crouch_height = 0.2
 head_bob_ammount = 20.0
@@ -26,17 +63,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12
 
 [node name="Eyes" type="Camera3D" parent="Head"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+cull_mask = 1048573
 fov = 90.0
 
 [node name="InteractionRay" type="RayCast3D" parent="Head/Eyes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 target_position = Vector3(0, 0, -1.9)
+collision_mask = 3
+
+[node name="Hand" type="Node3D" parent="Head/Eyes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06947e-09, 0, -0.942012)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Eyes"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Head/Eyes/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+script = ExtResource("3_aq5rt")
+
+[node name="TotorialCamera" type="Camera3D" parent="Head/Eyes/SubViewportContainer/SubViewport"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, 0)
+cull_mask = 2
+fov = 90.0
 
 [node name="PlayerUI" type="Control" parent="Head/Eyes"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -6.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -56,8 +119,41 @@ texture_filter = 4
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_kanrg")
 
-[node name="Hand" type="Node3D" parent="Head/Eyes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06947e-09, 0, -0.942012)
+[node name="LockPickingBar" type="ProgressBar" parent="Head/Eyes/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = 185.0
+offset_right = 193.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_glmdn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_imk2t")
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="Head/Eyes/PlayerUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = 201.0
+offset_right = 194.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_2n8ag")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ald7")
+value = 100.0
+show_percentage = false
 
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
 cast_shadow = 0
@@ -66,3 +162,17 @@ mesh = SubResource("CapsuleMesh_ka62s")
 [node name="CrouchCheckRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 0.95, 2.08165e-12)
 target_position = Vector3(2.08165e-12, 1, 2.08165e-12)
+
+[node name="KeyBillboards" type="Node3D" parent="."]
+
+[node name="KeyE" type="MeshInstance3D" parent="KeyBillboards"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_ecie0")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_utgws")
+skeleton = NodePath("../..")
+
+[node name="LeftMouseButton" type="MeshInstance3D" parent="KeyBillboards"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_euc5n")
+mesh = SubResource("QuadMesh_0xyj0")

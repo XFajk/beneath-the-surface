@@ -1,7 +1,18 @@
 extends CharacterBody3D
 
+@onready var key_billboards: Dictionary = {
+	KEY_E = $KeyBillboards/KeyE,
+	LEFT_MOUSE_BUTTON = $KeyBillboards/LeftMouseButton
+}
+
 @onready var head: Node3D = $Head
 @onready var hand: Node3D = $Head/Eyes/Hand
+
+@onready var stamina_bar: ProgressBar = $Head/Eyes/PlayerUI/StaminaBar
+@onready var lockpicking_bar: ProgressBar = $Head/Eyes/PlayerUI/LockPickingBar
+
+@onready var main_camera: Camera3D = $Head/Eyes
+@onready var tutorial_camera: Camera3D = $Head/Eyes/SubViewportContainer/SubViewport/TotorialCamera
 
 @onready var interaction_ray: RayCast3D = $Head/Eyes/InteractionRay
 @onready var cross_hair: Sprite2D = $Head/Eyes/PlayerUI/Crosshair/CrosshairSprite
@@ -10,9 +21,11 @@ extends CharacterBody3D
 @onready var body_mesh: MeshInstance3D = $BodyMesh
 @onready var crouch_check: RayCast3D = $CrouchCheckRay
 
+@export_category("Mouse")
 @export var captured_mouse: bool = true
 @export var mouse_sensitivity: float = 0.05
 
+@export_category("Movement")
 @export var walk_speed: float = 2
 @export var runnig_speed: float = 5
 @export var crouch_speed: float = 1
@@ -20,12 +33,24 @@ extends CharacterBody3D
 var current_speed: float = 0.0
 var final_direction: Vector3 = Vector3.ZERO
 
+@export_category("Stamina")
+@export var stamina_delition: float = 5
+@export var stamina_regeneration: float = 2.5
+@export var stamina_soft_limit: float = 30.0
+@export var stamina_bar_blink_speed: float = 5.0
+@export var stamina_bar_color_lerp_speed: float = 3.0
+var stamina_bar_blink_index: float = 0.0
+var reached_soft_limit: bool = false
+
+@export_category("Physics")
 @export var gravity: float = 30.0
 @export var vertical_speed = 0.0
 
+@export_category("Jumping")
 @export var jump_strength: float = 8.5
 var jumped: bool = false
 
+@export_category("Crouch and Stand")
 @export var go_to_chrouch_speed: float = 4.0
 
 @export var player_stand_heigh: float = 1.9
@@ -34,6 +59,7 @@ var jumped: bool = false
 @export var player_crouch_heigh: float = 0.3
 @export var head_crouch_height: float = -0.5
 
+@export_category("Headbob")
 var head_bob_timmer: float = 0.0
 @export var head_bob_walk_speed: float = 10.0
 @export var head_bob_running_speed: float = 15.0
@@ -46,6 +72,7 @@ var in_interaction: bool = false
 var interactible: Object = null
 
 func _ready() -> void:
+	
 	# capture the mouse
 	if captured_mouse:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -80,6 +107,9 @@ func _input(event) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			captured_mouse = true
 
+func _process(delta):
+	tutorial_camera.global_transform = main_camera.global_transform
+
 func _physics_process(delta: float) -> void:
 	
 	var direction: Vector3 = Vector3.ZERO
@@ -99,6 +129,10 @@ func _physics_process(delta: float) -> void:
 	velocity = final_direction
 	move_and_slide()
 	
+	for key in key_billboards:
+		key_billboards[key].position = Vector3.ZERO
+		key_billboards[key].set_visible(false)
+		
 	apply_interactions()
 
 func apply_crouch(delta: float) -> void:
@@ -154,18 +188,45 @@ func apply_gravity(direction: Vector3, delat: float = 1.0) -> Vector3:
 
 func apply_speed(direction: Vector3, delta: float = 1.0) -> Vector3:
 	
+	if stamina_bar.value < 0.1:
+		reached_soft_limit = true
+	
+	if stamina_bar.value > stamina_soft_limit:
+		reached_soft_limit = false
+		
+	if stamina_bar.value < stamina_soft_limit:
+		stamina_bar_blink_index += delta
+		stamina_bar.modulate = Color(
+			cos(stamina_bar_blink_index*stamina_bar_blink_speed)/2+0.5,
+			cos(stamina_bar_blink_index*stamina_bar_blink_speed)/2+0.5,
+			cos(stamina_bar_blink_index*stamina_bar_blink_speed)/2+0.5,
+			1
+		)
+	elif stamina_bar.value > 99.9:
+		stamina_bar.modulate = stamina_bar.modulate.lerp(
+			Color(0, 0, 0, 0), delta*stamina_bar_color_lerp_speed
+		)
+	else:
+		stamina_bar.modulate = stamina_bar.modulate.lerp(
+			Color(1, 1, 1, 1), delta*stamina_bar_color_lerp_speed
+		)
+	
 	if direction.length():
-		current_speed = walk_speed
-		head_bob_speed = head_bob_walk_speed
-		if Input.is_action_pressed("sprint"):
-			current_speed = runnig_speed
-			head_bob_speed = head_bob_running_speed
-		elif Input.is_action_pressed("crouch"):
+		if Input.is_action_pressed("crouch"):
 			current_speed = crouch_speed
 			head_bob_speed = head_bob_crouch_speed
+		elif Input.is_action_pressed("sprint") and stamina_bar.value and not reached_soft_limit:
+			current_speed = runnig_speed
+			head_bob_speed = head_bob_running_speed
+			stamina_bar.value -= (stamina_delition+stamina_regeneration)*delta
+		else:
+			current_speed = walk_speed
+			head_bob_speed = head_bob_walk_speed
 	else:
 		current_speed = 0.0
 		head_bob_speed = 0.0
+		
+	stamina_bar.value += stamina_regeneration*delta
 			
 	return direction*current_speed
 	
@@ -177,11 +238,17 @@ func apply_head_bob(direction: Vector3, delta: float) -> void:
 func apply_interactions() -> void:
 
 	var raycasted_object: Object = interaction_ray.get_collider()
-	
+	cross_hair.scale = Vector2(0.05, 0.05)
+	if in_interaction:
+		cross_hair.scale = Vector2(0.1, 0.1)
+		
 	if raycasted_object == null:
-		cross_hair.scale = Vector2(0.05, 0.05)
-		if in_interaction:
-			cross_hair.scale = Vector2(0.1, 0.1)
+		if interactible == null:
+			return
+		
+		if interactible.interacter == null:
+			interactible = null
+			in_interaction = false
 		return
 	
 	if interaction_ray.get_collider().has_method("start_interaction"):
@@ -193,14 +260,11 @@ func apply_interactions() -> void:
 			if not in_interaction:
 				interactible = null
 				return
-	else:
-		cross_hair.scale = Vector2(0.05, 0.05)
-	
+				
 	if interactible == null:
 		return
-
-	if interactible.interacter != self:
+	if interactible.interacter == null:
 		interactible = null
 		in_interaction = false
-		
-	
+
+

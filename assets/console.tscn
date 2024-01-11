@@ -39,6 +39,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w4m4s")
 
 [node name="Console" type="StaticBody3D"]
+collision_mask = 3
 script = ExtResource("1_skp6q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
