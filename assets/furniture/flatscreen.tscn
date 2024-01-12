@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1s6ihgwrfykt"]
+
+[ext_resource type="PackedScene" uid="uid://1lh74j14dtd3" path="res://assets/models_and_materials/flatscreen.glb" id="1_c5bkj"]
+
+[node name="flatscreen" instance=ExtResource("1_c5bkj")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.419971, -0.823524)

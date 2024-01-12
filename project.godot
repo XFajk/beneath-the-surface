@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="beneath the surface"
-run/main_scene="res://assets/levels/test_level.tscn"
+run/main_scene="res://assets/levels/touse_0_level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
