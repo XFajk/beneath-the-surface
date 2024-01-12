@@ -39,6 +39,7 @@ shadow_mesh = SubResource("ArrayMesh_vhiek")
 size = Vector3(0.2, 0.01, 0.1)
 
 [node name="Phone" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010081, 0)
 script = ExtResource("1_7au41")
 
 [node name="Cube" type="MeshInstance3D" parent="."]

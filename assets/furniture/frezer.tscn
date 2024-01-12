@@ -186,7 +186,9 @@ shape = SubResource("ConcavePolygonShape3D_wa3ug")
 
 [node name="door" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302625, -0.50773, 0.335479)
+visible = false
 script = ExtResource("2_hflw6")
+open_door_angle = -100.0
 
 [node name="Cube_001" type="MeshInstance3D" parent="door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161089, 0.0366062, -0.335479)
@@ -208,7 +210,9 @@ skeleton = NodePath("")
 
 [node name="door_001" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 7.98551e-09, 0, 1, 0, 1.5971e-08, 0, 1, 0.302625, 0.504029, 0.335479)
+visible = false
 script = ExtResource("2_hflw6")
+open_door_angle = -100.0
 
 [node name="Cube_002" type="MeshInstance3D" parent="door_001"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161089, -0.0335502, -0.335479)
