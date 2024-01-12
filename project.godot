@@ -15,10 +15,6 @@ run/main_scene="res://assets/levels/test_level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
-
-window/stretch/mode="viewport"
-
 [file_customization]
 
 folder_colors={

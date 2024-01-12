@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://crbsr60t6r1m7"]
+[gd_scene load_steps=17 format=3 uid="uid://crbsr60t6r1m7"]
 
 [ext_resource type="Script" path="res://src/entities/player.gd" id="1_7dypm"]
 [ext_resource type="Texture2D" uid="uid://bj4n2cdjwge15" path="res://crosshair.svg" id="2_kanrg"]
+[ext_resource type="Script" path="res://assets/entities/sub_viewport_container_res_setter.gd" id="2_pjbuv"]
 [ext_resource type="Script" path="res://src/sub_viewport_res_setter.gd" id="3_aq5rt"]
 [ext_resource type="Texture2D" uid="uid://c7tcfslg2mnje" path="res://assets/sprites/E.png" id="3_wd4en"]
 [ext_resource type="Texture2D" uid="uid://bbonv0wcj780o" path="res://assets/sprites/Mouse.png" id="4_m0tmw"]
@@ -80,6 +81,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch = true
+script = ExtResource("2_pjbuv")
 
 [node name="SubViewport" type="SubViewport" parent="Head/Eyes/SubViewportContainer"]
 transparent_bg = true
@@ -98,11 +101,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -6.0
-offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+script = ExtResource("2_pjbuv")
 
 [node name="Crosshair" type="Control" parent="Head/Eyes/PlayerUI"]
 layout_mode = 1

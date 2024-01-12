@@ -210,8 +210,6 @@ func apply_speed(direction: Vector3, delta: float = 1.0) -> Vector3:
 		stamina_bar.modulate = stamina_bar.modulate.lerp(
 			Color(1, 1, 1, 1), delta*stamina_bar_color_lerp_speed
 		)
-		
-	print(reached_soft_limit)
 	
 	if direction.length():
 		if Input.is_action_pressed("crouch"):
