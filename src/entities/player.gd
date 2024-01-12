@@ -188,7 +188,7 @@ func apply_gravity(direction: Vector3, delat: float = 1.0) -> Vector3:
 
 func apply_speed(direction: Vector3, delta: float = 1.0) -> Vector3:
 	
-	if stamina_bar.value < 0.1:
+	if stamina_bar.value < 1:
 		reached_soft_limit = true
 	
 	if stamina_bar.value > stamina_soft_limit:
@@ -210,12 +210,14 @@ func apply_speed(direction: Vector3, delta: float = 1.0) -> Vector3:
 		stamina_bar.modulate = stamina_bar.modulate.lerp(
 			Color(1, 1, 1, 1), delta*stamina_bar_color_lerp_speed
 		)
+		
+	print(reached_soft_limit)
 	
 	if direction.length():
 		if Input.is_action_pressed("crouch"):
 			current_speed = crouch_speed
 			head_bob_speed = head_bob_crouch_speed
-		elif Input.is_action_pressed("sprint") and stamina_bar.value and not reached_soft_limit:
+		elif Input.is_action_pressed("sprint") and stamina_bar.value > 1 and not reached_soft_limit:
 			current_speed = runnig_speed
 			head_bob_speed = head_bob_running_speed
 			stamina_bar.value -= (stamina_delition+stamina_regeneration)*delta
