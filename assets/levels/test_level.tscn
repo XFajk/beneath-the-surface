@@ -41,6 +41,9 @@ radial_segments = 10
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Player" parent="." instance=ExtResource("1_d5rw3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.15, 2.45)
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(12.5, 2.12796e-09, 0, -2.30359e-07, 0.0866025, -6.475, -1.32998e-07, 0.05, 11.215, -0.0528002, 3.15, -12.1)
 material_override = SubResource("StandardMaterial3D_a2jjm")
@@ -63,10 +66,6 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_f8s51")
-
-[node name="Player" parent="." instance=ExtResource("1_d5rw3")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.3, 1, 2.9)
-mouse_sensitivity = 0.09
 
 [node name="Cube" type="RigidBody3D" parent="."]
 transform = Transform3D(0.449399, 0.712873, 0.538379, -0.87115, 0.21625, 0.440832, 0.197833, -0.667119, 0.718202, 0.00800014, 1.956, -3.242)
@@ -112,8 +111,24 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube2"]
 shape = SubResource("BoxShape3D_1doku")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.65, -1.8)
+shadow_enabled = true
+omni_range = 4.3
+
+[node name="OmniLight3D" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45, 0.0500001, 6.4)
+shadow_enabled = true
+omni_range = 5.1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="OmniLight3D/OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.9, -5.05)
+shadow_enabled = true
+omni_range = 4.35
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, -0.5, -3.28021e-16, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -1.692, 13.156, 3.158)
+visible = false
 shadow_enabled = true
 shadow_opacity = 0.83
 
@@ -122,7 +137,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 0.8, -0.4)
 
 [node name="console" parent="." instance=ExtResource("4_lwe3y")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.4, 0.871888, -0.5)
-enable_tutorial_lable = true
 
 [node name="frezer" parent="." instance=ExtResource("5_vo14s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55, 1, -1.8)
@@ -132,7 +146,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65572, 0.277018, 4.57824)
 
 [node name="Phone" parent="." instance=ExtResource("3_pbs85")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.40793, 0.85, -0.0387078)
-enable_tutorial_lable = true
 
 [node name="vese" parent="." instance=ExtResource("8_lulrj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5846, 0.380519, 0.894398)
+
+[node name="Vase" parent="." instance=ExtResource("8_lulrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55, 0.380519, 1.75)

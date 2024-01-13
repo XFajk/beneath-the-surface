@@ -2,7 +2,8 @@ extends CharacterBody3D
 
 @onready var key_billboards: Dictionary = {
 	KEY_E = $KeyBillboards/KeyE,
-	LEFT_MOUSE_BUTTON = $KeyBillboards/LeftMouseButton
+	LEFT_MOUSE_BUTTON = $KeyBillboards/LeftMouseButton,
+	LOCK_ICON = $KeyBillboards/LockIcon
 }
 
 @onready var head: Node3D = $Head
@@ -12,7 +13,7 @@ extends CharacterBody3D
 @onready var lockpicking_bar: ProgressBar = $Head/Eyes/PlayerUI/LockPickingBar
 
 @onready var main_camera: Camera3D = $Head/Eyes
-@onready var tutorial_camera: Camera3D = $Head/Eyes/SubViewportContainer/SubViewport/TotorialCamera
+@onready var tutorial_camera: Camera3D = $Head/Eyes/SubViewportContainer/SubViewport/TutorialCamera
 
 @onready var interaction_ray: RayCast3D = $Head/Eyes/InteractionRay
 @onready var cross_hair: Sprite2D = $Head/Eyes/PlayerUI/Crosshair/CrosshairSprite
@@ -20,6 +21,10 @@ extends CharacterBody3D
 @onready var body_collision: CollisionShape3D = $Body
 @onready var body_mesh: MeshInstance3D = $BodyMesh
 @onready var crouch_check: RayCast3D = $CrouchCheckRay
+
+@onready var inventory_container: VBoxContainer = $Head/Eyes/PlayerUI/PauseMenu/ScrollContainer/InventoryContainer
+var inventory_label_setting: LabelSettings = preload("res://assets/entities/InventoryLable.res")
+@export_range(3, 7, 1) var inventory_size: int = 2
 
 @export_category("Mouse")
 @export var captured_mouse: bool = true
@@ -60,6 +65,7 @@ var jumped: bool = false
 @export var head_crouch_height: float = -0.5
 
 @export_category("Headbob")
+var head_bob_on: bool = true
 var head_bob_timmer: float = 0.0
 @export var head_bob_walk_speed: float = 10.0
 @export var head_bob_running_speed: float = 15.0
@@ -67,6 +73,13 @@ var head_bob_timmer: float = 0.0
 var head_bob_speed: float = 0.0
 @export var head_bob_ammount: float = 10.0 # 1=big bob, 1000 small bob
 var original_head_y: float = head_stand_height
+
+@export_category("Lockpicking")
+@export_range(1, 4, 1) var lockpick_level: int = 1
+
+var active_cursor_shake: float = 0.0
+var cursor_shake_timer: float = 0.0
+@onready var original_cursor_pos: Vector2 = cross_hair.position
 
 var in_interaction: bool = false
 var interactible: Object = null
@@ -103,37 +116,52 @@ func _input(event) -> void:
 		if captured_mouse:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			captured_mouse = false
+			$Head/Eyes/PlayerUI/PauseMenu.set_visible(true)
+			stamina_bar.set_visible(false)
+			cross_hair.set_visible(false)
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			captured_mouse = true
+			$Head/Eyes/PlayerUI/PauseMenu.set_visible(false)
+			$Head/Eyes/PlayerUI/OptionsMenu.set_visible(false)
+			stamina_bar.set_visible(true)
+			cross_hair.set_visible(true)
+			
 
 func _process(delta):
 	tutorial_camera.global_transform = main_camera.global_transform
-
-func _physics_process(delta: float) -> void:
+	tutorial_camera.fov = main_camera.fov
 	
-	var direction: Vector3 = Vector3.ZERO
-	
-	apply_crouch(delta)
-	
-	direction = apply_movement(direction)
-	
-	direction = direction.normalized()
-	direction = apply_speed(direction, delta)
-	
-	apply_head_bob(direction, delta)
-	
-	direction = apply_gravity(direction, delta)
-	
-	final_direction = final_direction.lerp(direction, acceleration*delta)
-	velocity = final_direction
-	move_and_slide()
+	apply_cursor_shake(delta)
 	
 	for key in key_billboards:
 		key_billboards[key].position = Vector3.ZERO
 		key_billboards[key].set_visible(false)
 		
-	apply_interactions()
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		apply_interactions()
+
+func _physics_process(delta: float) -> void:
+	
+	if captured_mouse:
+		var direction: Vector3 = Vector3.ZERO
+		
+		apply_crouch(delta)
+		
+		direction = apply_movement(direction)
+		
+		direction = direction.normalized()
+		direction = apply_speed(direction, delta)
+		
+		if head_bob_on:
+			apply_head_bob(direction, delta)
+		
+		direction = apply_gravity(direction, delta)
+		
+		final_direction = final_direction.lerp(direction, acceleration*delta)
+		velocity = final_direction
+		move_and_slide()
+		
 
 func apply_crouch(delta: float) -> void:
 	
@@ -267,4 +295,38 @@ func apply_interactions() -> void:
 		interactible = null
 		in_interaction = false
 
+func apply_cursor_shake(delta: float) -> void:
+	if active_cursor_shake > 0:
+		active_cursor_shake -= delta*10
+		cursor_shake_timer += delta
+		cross_hair.position.x = sin(cursor_shake_timer*50.0)*6
+	else:
+		cross_hair.position = original_cursor_pos
 
+
+# pause menu button signals
+func _on_resume_pressed():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	captured_mouse = true
+	$Head/Eyes/PlayerUI/PauseMenu.set_visible(false)
+	$Head/Eyes/PlayerUI/OptionsMenu.set_visible(false)
+	stamina_bar.set_visible(true)
+	cross_hair.set_visible(true)
+
+
+func _on_exit_game_pressed():
+	get_tree().quit()
+
+
+func _on_options_pressed():
+	$Head/Eyes/PlayerUI/PauseMenu.set_visible(false)
+	$Head/Eyes/PlayerUI/OptionsMenu.set_visible(true)
+
+
+func _on_close_pressed():
+	$Head/Eyes/PlayerUI/PauseMenu.set_visible(true)
+	$Head/Eyes/PlayerUI/OptionsMenu.set_visible(false)
+
+
+func _on_head_bob_toggled(toggled_on):
+	head_bob_on = toggled_on

@@ -5,6 +5,10 @@ extends RigidBody3D
 
 var interacter: Object = null
 
+func _ready():
+	set_collision_layer_value(1, true)
+	set_collision_layer_value(2, true)
+
 func _physics_process(delta):
 	if interacter != null:
 		interact()
