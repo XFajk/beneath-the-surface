@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://itt32aeoiqgd"]
+[gd_scene load_steps=18 format=3 uid="uid://itt32aeoiqgd"]
 
 [ext_resource type="Script" path="res://src/level/level.gd" id="1_1qqdo"]
 [ext_resource type="PackedScene" uid="uid://o33d3gs7y8xp" path="res://assets/entities/House_0.tscn" id="1_hg2ds"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://b7ofbe7xyrhmy" path="res://assets/furniture/remote.tscn" id="12_q06ll"]
 [ext_resource type="PackedScene" uid="uid://1s6ihgwrfykt" path="res://assets/furniture/flatscreen.tscn" id="13_kiu8w"]
 [ext_resource type="PackedScene" uid="uid://by6u67fnvegx6" path="res://assets/furniture/kitchen_counter.tscn" id="14_n2667"]
+[ext_resource type="PackedScene" uid="uid://dmhv44po64pyn" path="res://assets/furniture/washing_machine.tscn" id="16_mb5gm"]
+[ext_resource type="AudioStream" uid="uid://rwqtp0vydqhn" path="res://assets/sounds/stealth.wav" id="17_ecjlw"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
@@ -110,6 +112,12 @@ transform = Transform3D(-0.999137, 0, -0.0415268, 0, 1, 0, 0.0415268, 0, -0.9991
 [node name="sofa" parent="Static_Furniture" instance=ExtResource("2_v5mqd")]
 transform = Transform3D(0.999556, 0, 0.0297884, 0, 1, 0, -0.0297884, 0, 0.999556, -8.3399, 0.22, -15.0823)
 
+[node name="washing_machine" parent="Static_Furniture" instance=ExtResource("16_mb5gm")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 6.87454, 0.638772, -3.02874)
+
+[node name="washing_machine2" parent="Static_Furniture" instance=ExtResource("16_mb5gm")]
+transform = Transform3D(-0.999665, 0, 0.0258626, 0, 1, 0, -0.0258626, 0, -0.999665, 6.86677, 0.628544, -2.0717)
+
 [node name="Spawn_Positions" type="Node3D" parent="."]
 
 [node name="Small" type="Node3D" parent="Spawn_Positions"]
@@ -183,6 +191,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99486, 0.770357, 6.53661)
 [node name="Small_Pos23" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43827, 0.805338, 4.64752)
 
+[node name="Small_Pos24" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8695, 1.28648, -2.9988)
+
 [node name="Medium" type="Node3D" parent="Spawn_Positions"]
 
 [node name="Medium_Pos" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
@@ -198,4 +209,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1437, 0.0847804, -7.37283)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.86907, 0.349862, 0.663117)
 
 [node name="Medium_Pos5" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8791, 0.0430255, 7.36104)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8111, 0.0430255, 8.13424)
+
+[node name="Medium_Pos6" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.43298, 0.086051, -8.23969)
+
+[node name="Medium_Pos7" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38415, 0.0430255, -12.1926)
+
+[node name="Medium_Pos8" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.31474, 0.086051, -17.5411)
+
+[node name="Medium_Pos10" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20714, 0.0430255, -1.15179)
+
+[node name="Medium_Pos11" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88246, 1.1084, -16.1374)
+
+[node name="Large" type="Node3D" parent="Spawn_Positions"]
+
+[node name="Large_Pos" type="Node3D" parent="Spawn_Positions/Large" groups=["Large_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26833, 0.0378534, -4.76928)
+
+[node name="Large_Pos2" type="Node3D" parent="Spawn_Positions/Large" groups=["Large_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53666, 0.0757067, 6.90399)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ecjlw")
+volume_db = 0.819

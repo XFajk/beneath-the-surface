@@ -1884,7 +1884,6 @@ points = PackedVector3Array(0, -1.106, -0.04, 0.656, -1.106, -0.04, 0, -1.106, -
 
 [node name="Walls" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0385, 0, 14.8351)
-visible = false
 mesh = SubResource("ArrayMesh_t72n7")
 skeleton = NodePath("")
 
