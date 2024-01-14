@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://by6u67fnvegx6"]
+[gd_scene load_steps=38 format=3 uid="uid://by6u67fnvegx6"]
 
 [ext_resource type="Texture2D" uid="uid://csj11a5j7yb7x" path="res://assets/models_and_materials/kitchen_counter_cabdoor_texture.png" id="1_5lfqi"]
 [ext_resource type="Texture2D" uid="uid://bm4kkcuk0w2v7" path="res://assets/models_and_materials/kitchen_counter_marble.png" id="2_ex4vh"]
@@ -409,6 +409,12 @@ shadow_mesh = SubResource("ArrayMesh_kvka1")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o0ddu"]
 points = PackedVector3Array(-0.456631, 0.5, 0.5, -0.44343, 0.486667, 0.486758, -0.456631, 0.5, -0.183231, -0.5, 0.5, 0.5, -0.456631, -0.809765, 0.5, -0.44343, 0.486667, -0.170055, -0.44343, -0.796688, 0.486758, -0.5, 0.5, -0.183231, -0.456631, -0.809765, -0.183231, -0.5, -0.809765, 0.5, -0.44343, -0.796688, -0.170055, -0.5, -0.809765, -0.183231)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wwqfi"]
+size = Vector3(0.883286, 0.247225, 1.6994)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vkhb4"]
+size = Vector3(0.774902, 0.349609, 0.810059)
+
 [node name="kitchen_counter" type="StaticBody3D"]
 
 [node name="counter" type="MeshInstance3D" parent="."]
@@ -421,9 +427,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("ConcavePolygonShape3D_6n14o")
 
 [node name="door1" type="StaticBody3D" parent="."]
-transform = Transform3D(0.866025, 0, 0.53048, 0, 0.819925, 0, -0.5, 0, 0.918818, 0.506178, 0.670074, 3.13881)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0.506178, 0.670074, 3.13881)
 script = ExtResource("3_78qqy")
+tutorial_lable_pos = Vector3(0, 0.2, 0.455)
+enable_tutorial_lable = true
+open_door_angle = -90.0
 
 [node name="cab_door_1" type="MeshInstance3D" parent="door1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.500272, 0.161288, -0.500627)
@@ -436,8 +444,9 @@ shape = SubResource("ConvexPolygonShape3D_hm0ra")
 
 [node name="door2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0.508436, 0.670274, 1.66987)
-visible = false
 script = ExtResource("3_78qqy")
+tutorial_lable_pos = Vector3(0, 0.2, -0.45)
+enable_tutorial_lable = true
 
 [node name="cab_door_2" type="MeshInstance3D" parent="door2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498015, 0.161044, 0.188515)
@@ -450,8 +459,10 @@ shape = SubResource("ConvexPolygonShape3D_mpic4")
 
 [node name="door3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0.508912, 0.670448, 1.57445)
-visible = false
 script = ExtResource("3_78qqy")
+tutorial_lable_pos = Vector3(0, 0.2, 0.455)
+enable_tutorial_lable = true
+open_door_angle = -90.0
 
 [node name="cab_door_3" type="MeshInstance3D" parent="door3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497538, 0.160832, -0.503413)
@@ -464,8 +475,9 @@ shape = SubResource("ConvexPolygonShape3D_61k6c")
 
 [node name="door4" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0.508912, 0.670448, 0.12427)
-visible = false
 script = ExtResource("3_78qqy")
+tutorial_lable_pos = Vector3(0, 0.2, -0.41)
+enable_tutorial_lable = true
 
 [node name="cab_door_4" type="MeshInstance3D" parent="door4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497538, 0.160832, 0.172694)
@@ -478,8 +490,10 @@ shape = SubResource("ConvexPolygonShape3D_mtp6a")
 
 [node name="door5" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0.508912, 0.670448, 0.0106722)
-visible = false
 script = ExtResource("3_78qqy")
+tutorial_lable_pos = Vector3(0, 0.2, 0.455)
+enable_tutorial_lable = true
+open_door_angle = -90.0
 
 [node name="cab_door_5" type="MeshInstance3D" parent="door5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.06903, 0.497538, 0.160832, -0.529322)
@@ -492,8 +506,9 @@ shape = SubResource("ConvexPolygonShape3D_1eeil")
 
 [node name="door6" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0.508912, 0.670448, -1.53377)
-visible = false
 script = ExtResource("3_78qqy")
+tutorial_lable_pos = Vector3(0, 0.2, -0.45)
+enable_tutorial_lable = true
 
 [node name="cab_door_6" type="MeshInstance3D" parent="door6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.06903, 0.497538, 0.160832, 0.190635)
@@ -506,8 +521,10 @@ shape = SubResource("ConvexPolygonShape3D_6akb4")
 
 [node name="door7" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0.508912, 0.670448, -1.64978)
-visible = false
 script = ExtResource("3_78qqy")
+tutorial_lable_pos = Vector3(0, 0.2, 0.455)
+enable_tutorial_lable = true
+open_door_angle = -90.0
 
 [node name="cab_door_7" type="MeshInstance3D" parent="door7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.01397, 0.497538, 0.160832, -0.503239)
@@ -520,8 +537,9 @@ shape = SubResource("ConvexPolygonShape3D_yk3sf")
 
 [node name="door8" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0.508912, 0.670448, -3.11688)
-visible = false
 script = ExtResource("3_78qqy")
+tutorial_lable_pos = Vector3(0, 0.2, -0.415)
+enable_tutorial_lable = true
 
 [node name="cab_door_8" type="MeshInstance3D" parent="door8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.01397, 0.497538, 0.160832, 0.179163)
@@ -531,3 +549,11 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.01397, 0.497538, 0.160832, 0.179163)
 shape = SubResource("ConvexPolygonShape3D_o0ddu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00563031, 0.975542, -0.717835)
+shape = SubResource("BoxShape3D_wwqfi")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112549, 1.53655, -0.842893)
+shape = SubResource("BoxShape3D_vkhb4")

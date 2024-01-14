@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://b5fnqme2y2y00" path="res://assets/models_and_materials/coffe_table.material" id="2_ff3hd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu57c"]
-size = Vector3(1.5, 0.0866211, 1.6)
+size = Vector3(1.5, 0.105249, 1.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3hpnh"]
 size = Vector3(0.151562, 0.792786, 0.156421)
@@ -44,7 +44,7 @@ shadow_mesh = SubResource("ArrayMesh_yt30l")
 collision_mask = 3
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00668949, -5.96046e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00878388, -5.96046e-08)
 shape = SubResource("BoxShape3D_nu57c")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]

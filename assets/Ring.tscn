@@ -217,29 +217,31 @@ shadow_mesh = SubResource("ArrayMesh_vpovm")
 
 [node name="ring" type="StaticBody3D"]
 script = ExtResource("1_fbnt8")
+enable_tutorial_label = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0370531, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0320688, 0)
 shape = SubResource("ConcavePolygonShape3D_myq8n")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.0785975, 0.043231, 0)
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.0785975, 0.112353, 0)
 shape = SubResource("ConcavePolygonShape3D_e5jw6")
 
 [node name="Ring" type="Node3D" parent="."]
 transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Cone" type="MeshInstance3D" parent="Ring"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0211129, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0902348, 0, 0)
 mesh = SubResource("ArrayMesh_wr8y7")
 skeleton = NodePath("")
 
 [node name="Cylinder" type="MeshInstance3D" parent="Ring"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0691219, 0, 0)
 mesh = SubResource("ArrayMesh_44qug")
 skeleton = NodePath("")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0370531, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0320688, 0)
 mesh = SubResource("ArrayMesh_rt5of")
 skeleton = NodePath("")
 
@@ -247,6 +249,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0532171, -0.00736868, 0.00119442)
 
 [node name="Cube_001" type="MeshInstance3D" parent="Empty"]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.0253803, 0.0505997, -0.00119442)
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.0253803, 0.119722, -0.00119442)
 mesh = SubResource("ArrayMesh_bieg3")
 skeleton = NodePath("")
