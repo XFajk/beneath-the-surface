@@ -1,0 +1,239 @@
+[gd_scene load_steps=18 format=3 uid="uid://itt32aeoiqgd"]
+
+[ext_resource type="Script" path="res://src/level/level.gd" id="1_1qqdo"]
+[ext_resource type="PackedScene" uid="uid://o33d3gs7y8xp" path="res://assets/entities/House_0.tscn" id="1_hg2ds"]
+[ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/sofa.tscn" id="2_v5mqd"]
+[ext_resource type="PackedScene" uid="uid://bhee1m87cr60r" path="res://assets/furniture/coffe_table.tscn" id="3_psrcu"]
+[ext_resource type="PackedScene" uid="uid://dhrh4fi20xl6o" path="res://assets/furniture/kitchen_shelf.tscn" id="4_lv07o"]
+[ext_resource type="PackedScene" uid="uid://bv6hgliu857hb" path="res://assets/furniture/dining_table.tscn" id="5_q3usu"]
+[ext_resource type="PackedScene" uid="uid://df2awwrggpwmj" path="res://assets/furniture/bed.tscn" id="6_ymutj"]
+[ext_resource type="PackedScene" uid="uid://bsa7gwjdue2fm" path="res://assets/furniture/frezer.tscn" id="7_ikxtl"]
+[ext_resource type="PackedScene" uid="uid://crbsr60t6r1m7" path="res://assets/entities/Player.tscn" id="8_l4oju"]
+[ext_resource type="PackedScene" uid="uid://bw8nipjxyndak" path="res://assets/furniture/bed_table.tscn" id="9_bi60c"]
+[ext_resource type="PackedScene" uid="uid://bq4bpjf24h2bk" path="res://assets/furniture/plastic_chair.tscn" id="10_20mxc"]
+[ext_resource type="PackedScene" uid="uid://5ab8k7hakbmk" path="res://assets/furniture/bath.tscn" id="11_um4dh"]
+[ext_resource type="PackedScene" uid="uid://b7ofbe7xyrhmy" path="res://assets/furniture/remote.tscn" id="12_q06ll"]
+[ext_resource type="PackedScene" uid="uid://1s6ihgwrfykt" path="res://assets/furniture/flatscreen.tscn" id="13_kiu8w"]
+[ext_resource type="PackedScene" uid="uid://by6u67fnvegx6" path="res://assets/furniture/kitchen_counter.tscn" id="14_n2667"]
+[ext_resource type="PackedScene" uid="uid://dmhv44po64pyn" path="res://assets/furniture/washing_machine.tscn" id="16_mb5gm"]
+[ext_resource type="AudioStream" uid="uid://rwqtp0vydqhn" path="res://assets/sounds/stealth.wav" id="17_ecjlw"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("1_1qqdo")
+
+[node name="house0" parent="." instance=ExtResource("1_hg2ds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Player" parent="." instance=ExtResource("8_l4oju")]
+transform = Transform3D(-0.779796, 0, 0.0178186, 0, 0.78, 0, -0.0178186, 0, -0.779796, -0.438436, 1.17947, 5.91043)
+mouse_sensitivity = 0.25
+
+[node name="remote" parent="." instance=ExtResource("12_q06ll")]
+transform = Transform3D(-0.352136, 0, -0.935949, 0, 1, 0, 0.935949, 0, -0.352136, -5.39673, 0.839641, -14.4474)
+
+[node name="Static_Furniture" type="Node3D" parent="."]
+
+[node name="kitchen_counter" parent="Static_Furniture" instance=ExtResource("14_n2667")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.65566, -0.121841, -10.1699)
+
+[node name="flatscreen" parent="Static_Furniture" instance=ExtResource("13_kiu8w")]
+transform = Transform3D(-6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -6.36182, 1.50903, -10.2801)
+
+[node name="bath" parent="Static_Furniture" instance=ExtResource("11_um4dh")]
+transform = Transform3D(1.375, 0, 0, 0, 1.375, 0, 0, 0, 1.375, -9.85802, 0.482959, 0.523907)
+
+[node name="bed_table" parent="Static_Furniture" instance=ExtResource("9_bi60c")]
+transform = Transform3D(0.999758, 0, -0.0219894, 0, 1, 0, 0.0219894, 0, 0.999758, -5.79462, 0.482006, -9.39548)
+
+[node name="bed_table4" parent="Static_Furniture" instance=ExtResource("9_bi60c")]
+transform = Transform3D(0.999758, 0, -0.0219894, 0, 1, 0, 0.0219894, 0, 0.999758, -10.1172, 0.482006, 4.97588)
+
+[node name="bed_table5" parent="Static_Furniture" instance=ExtResource("9_bi60c")]
+transform = Transform3D(-0.170599, -0.000968719, 0.98534, -0.0116477, 0.999932, -0.00103358, -0.985272, -0.0116532, -0.170599, -10.1172, 0.482006, 7.75148)
+
+[node name="bed_table6" parent="Static_Furniture" instance=ExtResource("9_bi60c")]
+transform = Transform3D(0.0159272, 0.00121905, 0.999873, -0.0116477, 0.999932, -0.00103358, -0.999805, -0.0116297, 0.0159402, 6.82071, 0.482006, 6.04877)
+
+[node name="bed_table7" parent="Static_Furniture" instance=ExtResource("9_bi60c")]
+transform = Transform3D(-0.0827737, 6.5921e-05, 0.996568, -0.0116477, 0.999932, -0.00103358, -0.9965, -0.0116933, -0.0827673, 6.82071, 0.482006, 3.27243)
+
+[node name="bed_table3" parent="Static_Furniture" instance=ExtResource("9_bi60c")]
+transform = Transform3D(0.205453, 0, 0.978667, 0, 1, 0, -0.978667, 0, 0.205453, -2.60729, 0.482006, -5.89547)
+
+[node name="bed_table2" parent="Static_Furniture" instance=ExtResource("9_bi60c")]
+transform = Transform3D(0.999709, 0, 0.0241181, 0, 1, 0, -0.0241181, 0, 0.999709, -8.63061, 0.482006, -9.39548)
+
+[node name="plastic_chair" parent="Static_Furniture" instance=ExtResource("10_20mxc")]
+transform = Transform3D(-0.984353, 0, 0.176209, 0, 1, 0, -0.176209, 0, -0.984353, 1.94987, 0.61203, -14.8784)
+
+[node name="plastic_chair2" parent="Static_Furniture" instance=ExtResource("10_20mxc")]
+transform = Transform3D(-0.975638, 0, -0.219386, 0, 1, 0, 0.219386, 0, -0.975638, 3.75322, 0.61203, -14.8784)
+
+[node name="plastic_chair3" parent="Static_Furniture" instance=ExtResource("10_20mxc")]
+transform = Transform3D(-0.0885292, 0, -0.996074, 0, 1, 0, 0.996074, 0, -0.0885292, 4.57934, 0.61203, -16.0779)
+
+[node name="plastic_chair4" parent="Static_Furniture" instance=ExtResource("10_20mxc")]
+transform = Transform3D(0.984829, 0, 0.173528, 0, 1, 0, -0.173528, 0, 0.984829, 1.86599, 0.61203, -17.008)
+
+[node name="plastic_chair5" parent="Static_Furniture" instance=ExtResource("10_20mxc")]
+transform = Transform3D(0.999955, 0, 0.00949447, 0, 1, 0, -0.00949447, 0, 0.999955, 3.61902, 0.61203, -17.008)
+
+[node name="plastic_chair6" parent="Static_Furniture" instance=ExtResource("10_20mxc")]
+transform = Transform3D(0.368027, 0, 0.929815, 0, 1, 0, -0.929815, 0, 0.368027, 0.37298, 0.61203, -16.0937)
+
+[node name="frezer" parent="Static_Furniture" instance=ExtResource("7_ikxtl")]
+transform = Transform3D(-6.27258e-08, 0, 1.435, 0, 1.435, 0, -1.435, 0, -6.27258e-08, 2.15329, 1.36986, -6.02506)
+
+[node name="bed" parent="Static_Furniture" instance=ExtResource("6_ymutj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.2188, 0.209616, -8.68368)
+
+[node name="bed2" parent="Static_Furniture" instance=ExtResource("6_ymutj")]
+transform = Transform3D(-0.999765, 0, -0.0216579, 0, 1, 0, 0.0216579, 0, -0.999765, -9.39181, 0.209616, 6.32821)
+
+[node name="bed2" parent="Static_Furniture/bed2" instance=ExtResource("6_ymutj")]
+transform = Transform3D(-0.999253, 0, 0.0386668, 0, 1, 0, -0.0386668, 0, -0.999253, -15.4991, 0.209616, 1.35184)
+
+[node name="dining_table" parent="Static_Furniture" instance=ExtResource("5_q3usu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77888, 0.735852, -16.0617)
+
+[node name="kitchen_shelf2" parent="Static_Furniture" instance=ExtResource("4_lv07o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.80044, 2.53268, -8.31847)
+
+[node name="kitchen_shelf" parent="Static_Furniture" instance=ExtResource("4_lv07o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.80044, 2.53268, -11.8004)
+
+[node name="coffe_table" parent="Static_Furniture" instance=ExtResource("3_psrcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.95921, 0.772173, -15.0159)
+
+[node name="sofa2" parent="Static_Furniture" instance=ExtResource("2_v5mqd")]
+transform = Transform3D(-0.999137, 0, -0.0415268, 0, 1, 0, 0.0415268, 0, -0.999137, -3.41535, 0.22, -15.0059)
+
+[node name="sofa" parent="Static_Furniture" instance=ExtResource("2_v5mqd")]
+transform = Transform3D(0.999556, 0, 0.0297884, 0, 1, 0, -0.0297884, 0, 0.999556, -8.3399, 0.22, -15.0823)
+
+[node name="washing_machine" parent="Static_Furniture" instance=ExtResource("16_mb5gm")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 6.87454, 0.638772, -3.02874)
+
+[node name="washing_machine2" parent="Static_Furniture" instance=ExtResource("16_mb5gm")]
+transform = Transform3D(-0.999665, 0, 0.0258626, 0, 1, 0, -0.0258626, 0, -0.999665, 6.86677, 0.628544, -2.0717)
+
+[node name="Spawn_Positions" type="Node3D" parent="."]
+
+[node name="Small" type="Node3D" parent="Spawn_Positions"]
+
+[node name="Small_Pos" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50865, 0.592174, -10.978)
+
+[node name="Small_Pos2" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79024, 2.22719, -13.028)
+
+[node name="Small_Pos3" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81806, 2.20575, -10.5655)
+
+[node name="Small_Pos4" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81806, 2.20575, -9.58656)
+
+[node name="Small_Pos5" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81806, 2.20575, -7.00392)
+
+[node name="Small_Pos6" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50379, 1.16482, -10.1895)
+
+[node name="Small_Pos7" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.47045, 0.629937, -7.86341)
+
+[node name="Small_Pos8" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50379, 0.075367, -12.5382)
+
+[node name="Small_Pos9" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.96103, 1.11855, -16.3634)
+
+[node name="Small_Pos10" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51525, 1.11855, -15.795)
+
+[node name="Small_Pos11" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44755, 0.631812, -15.002)
+
+[node name="Small_Pos12" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80882, 0.0821687, -15.141)
+
+[node name="Small_Pos13" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80588, 0.532602, -9.37637)
+
+[node name="Small_Pos14" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6706, 0.532602, -9.37637)
+
+[node name="Small_Pos15" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0797, 0.532602, 5.03169)
+
+[node name="Small_Pos16" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1306, 0.532602, 7.74511)
+
+[node name="Small_Pos17" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81119, 0.532602, 6.08821)
+
+[node name="Small_Pos18" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81118, 0.532602, 3.23006)
+
+[node name="Small_Pos19" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17619, 1.48742, -6.02275)
+
+[node name="Small_Pos20" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17619, 0.118271, -6.02275)
+
+[node name="Small_Pos21" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44477, 0.770357, -8.22915)
+
+[node name="Small_Pos22" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99486, 0.770357, 6.53661)
+
+[node name="Small_Pos23" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43827, 0.805338, 4.64752)
+
+[node name="Small_Pos24" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8695, 1.28648, -2.9988)
+
+[node name="Medium" type="Node3D" parent="Spawn_Positions"]
+
+[node name="Medium_Pos" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.45746, 0.103818, -9.43039)
+
+[node name="Medium_Pos2" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14569, 0.0847804, -16.1073)
+
+[node name="Medium_Pos3" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1437, 0.0847804, -7.37283)
+
+[node name="Medium_Pos4" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.86907, 0.349862, 0.663117)
+
+[node name="Medium_Pos5" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8111, 0.0430255, 8.13424)
+
+[node name="Medium_Pos6" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.43298, 0.086051, -8.23969)
+
+[node name="Medium_Pos7" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38415, 0.0430255, -12.1926)
+
+[node name="Medium_Pos8" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.31474, 0.086051, -17.5411)
+
+[node name="Medium_Pos10" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20714, 0.0430255, -1.15179)
+
+[node name="Medium_Pos11" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88246, 1.1084, -16.1374)
+
+[node name="Large" type="Node3D" parent="Spawn_Positions"]
+
+[node name="Large_Pos" type="Node3D" parent="Spawn_Positions/Large" groups=["Large_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26833, 0.0378534, -4.76928)
+
+[node name="Large_Pos2" type="Node3D" parent="Spawn_Positions/Large" groups=["Large_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53666, 0.0757067, 6.90399)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ecjlw")
+volume_db = 0.819

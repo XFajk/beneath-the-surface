@@ -43,12 +43,14 @@ func start_interaction(new_interacter: Object) -> bool:
 			new_interacter.key_billboards.KEY_E.set_visible(true)
 		
 	if Input.is_action_just_pressed("pick_up") and not locked:
+
 		if not opened:
 			desired_angle = open_door_angle
 			opened = true
 		else:
 			desired_angle = start_door_angle
 			opened = false
+
 	elif Input.is_action_just_pressed("pick_up") and locked:
 		new_interacter.active_cursor_shake = 5
 	
@@ -71,9 +73,9 @@ func start_interaction(new_interacter: Object) -> bool:
 		return true
 		
 	return false
-	
+
 func interact() -> void:
-	
+
 	interacter.lockpicking_bar.visible = true
 	
 	if interacter.interaction_ray.get_collider() == null:
