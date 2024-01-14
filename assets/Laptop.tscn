@@ -95,6 +95,7 @@ data = PackedVector3Array(0.1879, -0.1879, 0.2, -0.1879, 0.1879, 0.2, 0.1879, 0.
 [node name="laptop" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0161635, 0)
 script = ExtResource("1_udt62")
+enable_tutorial_label = true
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.005, 0, 0, 0, 0.2, 0, 0, 0)

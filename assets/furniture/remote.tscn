@@ -240,7 +240,10 @@ shadow_mesh = SubResource("ArrayMesh_rg7v7")
 size = Vector3(0.483978, 0.100647, 0.215027)
 
 [node name="remote" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176822, 0.0146678, -0.0748643)
 script = ExtResource("1_qrahs")
+tutorial_lable_pos = Vector3(0, 0, -0.2)
+enable_tutorial_lable = true
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_teqyi")

@@ -1975,6 +1975,8 @@ skeleton = NodePath("")
 [node name="Door_2" type="StaticBody3D" parent="."]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1.04478, 1.11185, 5.62671)
 script = ExtResource("2_wy47c")
+tutorial_lable_pos = Vector3(-0.5, 0.18, -0.1)
+enable_tutorial_lable = true
 start_door_angle = 90.0
 open_door_angle = 200.0
 
@@ -2005,6 +2007,8 @@ skeleton = NodePath("")
 [node name="Door_1" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.7547, 1.11, 7.75016)
 script = ExtResource("2_wy47c")
+tutorial_lable_pos = Vector3(0.5, 0.18, -0.1)
+enable_tutorial_lable = true
 start_door_angle = -90.0
 open_door_angle = -200.0
 
@@ -2035,6 +2039,8 @@ skeleton = NodePath("")
 [node name="Door_3" type="StaticBody3D" parent="."]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1.03057, 1.11497, 4.25274)
 script = ExtResource("2_wy47c")
+tutorial_lable_pos = Vector3(0.5, 0.18, -0.1)
+enable_tutorial_lable = true
 start_door_angle = 90.0
 open_door_angle = -20.0
 
@@ -2065,6 +2071,8 @@ skeleton = NodePath("")
 [node name="Door_4" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81824, 1.15147, 3.29334)
 script = ExtResource("2_wy47c")
+tutorial_lable_pos = Vector3(-0.5, 0.18, -0.1)
+enable_tutorial_lable = true
 
 [node name="Door_004" type="MeshInstance3D" parent="Door_4"]
 mesh = SubResource("ArrayMesh_gohvu")
@@ -2093,6 +2101,8 @@ skeleton = NodePath("")
 [node name="Door_5" type="StaticBody3D" parent="."]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.36366, 1.11, 2.63678)
 script = ExtResource("2_wy47c")
+tutorial_lable_pos = Vector3(0.5, 0.18, -0.1)
+enable_tutorial_lable = true
 start_door_angle = 90.0
 open_door_angle = -50.0
 
@@ -2123,6 +2133,8 @@ skeleton = NodePath("")
 [node name="Door_6" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.47883, 1.11, 1.01495)
 script = ExtResource("2_wy47c")
+tutorial_lable_pos = Vector3(-0.5, 0.18, -0.1)
+enable_tutorial_lable = true
 start_door_angle = -180.0
 open_door_angle = -30.0
 
@@ -2153,6 +2165,8 @@ skeleton = NodePath("")
 [node name="Door_7" type="StaticBody3D" parent="."]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.26528, 1.11, 0.62167)
 script = ExtResource("2_wy47c")
+tutorial_lable_pos = Vector3(-0.5, 0.18, -0.1)
+enable_tutorial_lable = true
 start_door_angle = -90.0
 open_door_angle = 15.0
 
