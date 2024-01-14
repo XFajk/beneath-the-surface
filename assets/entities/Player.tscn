@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://crbsr60t6r1m7"]
+[gd_scene load_steps=33 format=3 uid="uid://crbsr60t6r1m7"]
 
 [ext_resource type="Script" path="res://src/entities/player.gd" id="1_7dypm"]
 [ext_resource type="Environment" uid="uid://kttecvt1ttwi" path="res://assets/entities/GameEnv.res" id="2_vc100"]
@@ -14,6 +14,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bc8x3"]
 radius = 0.3
 height = 2.1
+
+[sub_resource type="Environment" id="Environment_qase5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeyrw"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 0.392157)
@@ -97,7 +99,7 @@ size = Vector2(0.2, 0.2)
 script = ExtResource("1_7dypm")
 mouse_sensitivity = 0.08
 acceleration = 7.0
-stamina_delition = 30.0
+stamina_delition = 20.0
 stamina_regeneration = 10.0
 stamina_bar_blink_speed = 10.0
 stamina_bar_color_lerp_speed = 10.0
@@ -106,6 +108,7 @@ head_stand_height = 0.75
 player_crouch_heigh = 0.7
 head_crouch_height = 0.2
 head_bob_ammount = 20.0
+lockpick_level = 2
 
 [node name="Body" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_bc8x3")
@@ -142,8 +145,9 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="TutorialCamera" type="Camera3D" parent="Head/Eyes/SubViewportContainer/SubViewport"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.08165e-12, 0.75, 2.08165e-12)
 cull_mask = 2
+environment = SubResource("Environment_qase5")
 fov = 90.0
 
 [node name="PlayerUI" type="Control" parent="Head/Eyes"]

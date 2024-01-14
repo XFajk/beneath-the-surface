@@ -1897,6 +1897,7 @@ shape = SubResource("ConcavePolygonShape3D_g4y6v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19123, 1.02923, 14.5344)
 
 [node name="Window" type="MeshInstance3D" parent="Window_Group"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_47swo")
 skeleton = NodePath("")
 
@@ -1909,6 +1910,7 @@ shape = SubResource("ConcavePolygonShape3D_7s5w7")
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -10.6996, 1.03759, 4.9906)
 
 [node name="Window_005" type="MeshInstance3D" parent="Window_Group_001"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_jsdsi")
 skeleton = NodePath("")
 
@@ -1921,6 +1923,7 @@ shape = SubResource("ConcavePolygonShape3D_sbgij")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.39304, 0.1, -14.3403)
 
 [node name="Window_002" type="MeshInstance3D" parent="Window_Group_002"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_s6iq1")
 skeleton = NodePath("")
 
@@ -1933,6 +1936,7 @@ shape = SubResource("ConcavePolygonShape3D_ui4m3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86501, 1.03477, -14.3686)
 
 [node name="Window_003" type="MeshInstance3D" parent="Window_Group_003"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_q3eae")
 skeleton = NodePath("")
 
@@ -1945,6 +1949,7 @@ shape = SubResource("ConcavePolygonShape3D_cwl0v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1621, 1.0322, 12.5584)
 
 [node name="Window_006" type="MeshInstance3D" parent="Window_Group_006"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_t3ehq")
 skeleton = NodePath("")
 
@@ -1957,6 +1962,7 @@ shape = SubResource("ConcavePolygonShape3D_ksdtc")
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -10.7282, 1.03103, -9.69077)
 
 [node name="Window_007" type="MeshInstance3D" parent="Window_Group_007"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_7krm4")
 skeleton = NodePath("")
 
@@ -2217,8 +2223,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_1pjpw")
 
 [node name="Ceeling" type="MeshInstance3D" parent="."]
-transform = Transform3D(9.75748, 0, 0, 0, 9.75748, 0, 0, 0, 9.75748, -1.29168, 3.00228, 0.28867)
-visible = false
+transform = Transform3D(9.75748, 0, 0, 0, 9.75748, 0, 0, 0, 9.75748, -1.29168, 2.99644, 0.28867)
 mesh = SubResource("ArrayMesh_3iodq")
 skeleton = NodePath("")
 
@@ -2250,9 +2255,3 @@ skeleton = NodePath("")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Main_Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00589466, -0.00664556, -0.000217438)
 shape = SubResource("ConvexPolygonShape3D_jtjpm")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.2099, 0)
-light_color = Color(1, 0.835294, 0.631373, 1)
-light_energy = 16.0
-omni_range = 4096.0

@@ -219,7 +219,7 @@ func apply_gravity(direction: Vector3, delat: float = 1.0) -> Vector3:
 		if Input.is_action_pressed("jump") and not jumped:
 			vertical_speed = abs(jump_strength)
 			jumped = true
-		
+			
 	if is_on_ceiling():
 		vertical_speed = -10
 		

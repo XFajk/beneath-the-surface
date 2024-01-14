@@ -14,12 +14,18 @@ var desired_angle: float = 0.0
 var opened: bool = false
 
 @export_category("Locking")
-@export var locked: bool = false
+var locked: bool = false
 @export_range(1, 4, 1) var lock_level
 var lockpicking_speed: float = 0.0
 var lockpicking_decrement_speed: float = 15.0
 
 func _ready():
+	randomize()
+	
+	var lock_generator: int = randi_range(0, 80)
+	
+	locked = lock_generator > 60
+	
 	desired_angle = start_door_angle
 	rotation_degrees.y = start_door_angle
 	

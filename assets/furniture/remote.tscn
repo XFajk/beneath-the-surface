@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://m61wol5yvjhk" path="res://assets/models_and_materials/remote_remote.png" id="1_11rh0"]
 [ext_resource type="Script" path="res://src/objects/pickupeble.gd" id="1_qrahs"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhtsj"]
+size = Vector3(0.433884, 0.100647, 0.153122)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vgxh"]
 resource_name = "remote"
 cull_mode = 2
@@ -236,39 +239,45 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rg7v7")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fhtsj"]
-size = Vector3(0.483978, 0.100647, 0.215027)
-
 [node name="remote" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176822, 0.0146678, -0.0748643)
 script = ExtResource("1_qrahs")
-tutorial_lable_pos = Vector3(0, 0, -0.2)
+tutorial_lable_pos = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 enable_tutorial_lable = true
 
-[node name="Cube" type="MeshInstance3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00617583, 0.0341492, 0.00949681)
+shape = SubResource("BoxShape3D_fhtsj")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0137946, 0, 0.0136656)
+
+[node name="Cube" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179637, 0, -0.0624756)
 mesh = SubResource("ArrayMesh_teqyi")
 skeleton = NodePath("")
 
-[node name="Cube_002" type="MeshInstance3D" parent="."]
+[node name="Cube_002" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179637, 0, -0.0624756)
 mesh = SubResource("ArrayMesh_wwsif")
 skeleton = NodePath("")
 
-[node name="Cube_003" type="MeshInstance3D" parent="."]
+[node name="Cube_003" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179637, 0, -0.0624756)
 mesh = SubResource("ArrayMesh_jhvfi")
 skeleton = NodePath("")
 
-[node name="Cube_004" type="MeshInstance3D" parent="."]
+[node name="Cube_004" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179637, 0, -0.0624756)
 mesh = SubResource("ArrayMesh_inhcx")
 skeleton = NodePath("")
 
-[node name="Cube_005" type="MeshInstance3D" parent="."]
+[node name="Cube_005" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179637, 0, -0.0624756)
 mesh = SubResource("ArrayMesh_6muj7")
 skeleton = NodePath("")
 
-[node name="Cube_006" type="MeshInstance3D" parent="."]
+[node name="Cube_006" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179637, 0, -0.0624756)
 mesh = SubResource("ArrayMesh_j4ou6")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187271, 0.0341492, 0.0488586)
-shape = SubResource("BoxShape3D_fhtsj")

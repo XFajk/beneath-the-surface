@@ -414,6 +414,7 @@ size = Vector3(0.305176, 0.550388, 0.348877)
 size = Vector3(1.0116, 0.2565, 0.903748)
 
 [node name="work_chair" type="RigidBody3D"]
+collision_layer = 3
 script = ExtResource("1_ber3g")
 
 [node name="Cube_002" type="MeshInstance3D" parent="."]
