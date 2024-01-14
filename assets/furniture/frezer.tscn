@@ -212,7 +212,6 @@ mesh = SubResource("ArrayMesh_30hw7")
 skeleton = NodePath("")
 
 [node name="door" type="StaticBody3D" parent="."]
-
 transform = Transform3D(1, 0, -6.95883e-09, 0, 1, 0, 3.87601e-08, 0, 1, 0.302625, -0.50773, 0.335479)
 collision_mask = 3
 script = ExtResource("2_hflw6")

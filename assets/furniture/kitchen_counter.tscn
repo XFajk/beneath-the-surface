@@ -417,11 +417,11 @@ mesh = SubResource("ArrayMesh_f1fu0")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0, 0.109496, -0.00146417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("ConcavePolygonShape3D_6n14o")
 
 [node name="door1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.819925, 0, 0, 0, 1.06096, 0.506178, 0.670074, 3.13881)
+transform = Transform3D(0.866025, 0, 0.53048, 0, 0.819925, 0, -0.5, 0, 0.918818, 0.506178, 0.670074, 3.13881)
 visible = false
 script = ExtResource("3_78qqy")
 

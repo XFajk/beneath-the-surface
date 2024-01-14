@@ -25,10 +25,6 @@ script = ExtResource("1_1qqdo")
 [node name="house0" parent="." instance=ExtResource("1_hg2ds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="Player" parent="." instance=ExtResource("8_l4oju")]
-transform = Transform3D(-0.779796, 0, 0.0178186, 0, 0.78, 0, -0.0178186, 0, -0.779796, -0.438436, 1.17947, 5.91043)
-mouse_sensitivity = 0.25
-
 [node name="remote" parent="." instance=ExtResource("12_q06ll")]
 transform = Transform3D(-0.352136, 0, -0.935949, 0, 1, 0, 0.935949, 0, -0.352136, -5.39673, 0.839641, -14.4474)
 
@@ -237,3 +233,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53666, 0.0757067, 6.90399)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_ecjlw")
 volume_db = 0.819
+
+[node name="Player" parent="." instance=ExtResource("8_l4oju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.1, 4.95)
+jump_strength = 9.0
