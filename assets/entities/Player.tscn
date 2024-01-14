@@ -1,19 +1,106 @@
-[gd_scene load_steps=5 format=3 uid="uid://crbsr60t6r1m7"]
+[gd_scene load_steps=32 format=3 uid="uid://crbsr60t6r1m7"]
 
 [ext_resource type="Script" path="res://src/entities/player.gd" id="1_7dypm"]
-[ext_resource type="Texture2D" uid="uid://bj4n2cdjwge15" path="res://crosshair.svg" id="2_kanrg"]
+[ext_resource type="Environment" uid="uid://kttecvt1ttwi" path="res://assets/entities/GameEnv.res" id="2_vc100"]
+[ext_resource type="Texture2D" uid="uid://c7tcfslg2mnje" path="res://assets/sprites/E.png" id="3_wd4en"]
+[ext_resource type="Texture2D" uid="uid://bbonv0wcj780o" path="res://assets/sprites/Mouse.png" id="4_m0tmw"]
+[ext_resource type="Texture2D" uid="uid://bj4n2cdjwge15" path="res://assets/sprites/crosshair.svg" id="4_wrldi"]
+[ext_resource type="Script" path="res://src/UI/money_lable.gd" id="5_7d3dc"]
+[ext_resource type="Script" path="res://src/UI/timer.gd" id="5_acukg"]
+[ext_resource type="LabelSettings" uid="uid://dm7x4ep8081ml" path="res://assets/entities/InventoryLable.res" id="5_vxbpb"]
+[ext_resource type="Script" path="res://src/UI/score_label.gd" id="6_55kp7"]
+[ext_resource type="Texture2D" uid="uid://cway3ky1o72l4" path="res://assets/sprites/Lock.png" id="7_3e0sb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bc8x3"]
 radius = 0.3
 height = 1.9
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeyrw"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1b12i"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glmdn"]
+bg_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imk2t"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n8ag"]
+bg_color = Color(0, 0, 0, 0.172549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ald7"]
+bg_color = Color(1, 0.407843, 0.337255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2kudt"]
+font_size = 30
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1t1bl"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_euq3r"]
+font_size = 30
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ka62s"]
 radius = 0.3
 height = 1.9
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_jlp4m"]
+viewport_path = NodePath("KeyBillboards/PressKeyE/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ii1m"]
+font_size = 120
+outline_size = 80
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i2v2j"]
+viewport_path = NodePath("KeyBillboards/HoldKeyE/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_oreik"]
+font_size = 120
+outline_size = 80
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecie0"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_wd4en")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_utgws"]
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_euc5n"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("4_m0tmw")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_0xyj0"]
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vmlr"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("7_3e0sb")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_dr7qk"]
+size = Vector2(0.2, 0.2)
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_7dypm")
+mouse_sensitivity = 0.08
 acceleration = 7.0
+stamina_delition = 30.0
+stamina_regeneration = 10.0
+stamina_bar_blink_speed = 10.0
+stamina_bar_color_lerp_speed = 10.0
 player_crouch_heigh = 0.7
 head_crouch_height = 0.2
 head_bob_ammount = 20.0
@@ -27,11 +114,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12
 
 [node name="Eyes" type="Camera3D" parent="Head"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+cull_mask = 1048573
+environment = ExtResource("2_vc100")
 fov = 90.0
 
 [node name="InteractionRay" type="RayCast3D" parent="Head/Eyes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 target_position = Vector3(0, 0, -1.9)
+collision_mask = 3
+
+[node name="Hand" type="Node3D" parent="Head/Eyes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06947e-09, 0, -0.942012)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Eyes"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Head/Eyes/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="TutorialCamera" type="Camera3D" parent="Head/Eyes/SubViewportContainer/SubViewport"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, 0)
+cull_mask = 2
+fov = 90.0
 
 [node name="PlayerUI" type="Control" parent="Head/Eyes"]
 layout_mode = 3
@@ -55,10 +167,295 @@ grow_vertical = 2
 [node name="CrosshairSprite" type="Sprite2D" parent="Head/Eyes/PlayerUI/Crosshair"]
 texture_filter = 4
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_kanrg")
+texture = ExtResource("4_wrldi")
 
-[node name="Hand" type="Node3D" parent="Head/Eyes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06947e-09, 0, -0.942012)
+[node name="HoldInteractionBar" type="ProgressBar" parent="Head/Eyes/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 38.79
+offset_right = 50.0
+offset_bottom = 45.79
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_yeyrw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1b12i")
+show_percentage = false
+
+[node name="LockPickingBar" type="ProgressBar" parent="Head/Eyes/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.413
+anchor_top = 0.59
+anchor_right = 0.587
+anchor_bottom = 0.6
+offset_left = 0.22398
+offset_top = -0.200027
+offset_right = -0.224014
+offset_bottom = 0.319983
+theme_override_styles/background = SubResource("StyleBoxFlat_glmdn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_imk2t")
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="Head/Eyes/PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.332
+anchor_top = 0.81
+anchor_right = 0.668
+anchor_bottom = 0.821
+offset_left = 0.53598
+offset_top = 0.11996
+offset_right = 0.463951
+offset_bottom = -0.00802565
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_2n8ag")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ald7")
+value = 100.0
+show_percentage = false
+
+[node name="InventoryInfo" type="Label" parent="Head/Eyes/PlayerUI"]
+layout_mode = 0
+offset_left = 20.0
+offset_right = 74.0
+offset_bottom = 49.0
+text = "ITEMS: 0/0"
+label_settings = ExtResource("5_vxbpb")
+
+[node name="PauseMenu" type="Control" parent="Head/Eyes/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="Head/Eyes/PlayerUI/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.398
+anchor_top = 0.286
+anchor_right = 0.602
+anchor_bottom = 0.714
+offset_left = 0.503963
+offset_top = 0.171991
+offset_right = -0.504066
+offset_bottom = -0.17203
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+
+[node name="Pause" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu/TabContainer"]
+layout_mode = 2
+
+[node name="Buttons" type="Control" parent="Head/Eyes/PlayerUI/PauseMenu/TabContainer/Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="Head/Eyes/PlayerUI/PauseMenu/TabContainer/Pause/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.35
+offset_left = 0.199999
+offset_right = 0.0339907
+offset_bottom = -5.75
+grow_horizontal = 2
+text = "Resume"
+
+[node name="Options" type="Button" parent="Head/Eyes/PlayerUI/PauseMenu/TabContainer/Pause/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.4
+anchor_right = 0.8
+anchor_bottom = 0.5
+offset_left = -0.0120023
+offset_top = -0.0650016
+offset_right = 3.09799
+offset_bottom = 0.0649943
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="ExitGame" type="Button" parent="Head/Eyes/PlayerUI/PauseMenu/TabContainer/Pause/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.55
+anchor_right = 0.8
+anchor_bottom = 0.65
+offset_left = 3.2
+offset_top = 7.99999
+offset_right = 2.8
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Exit Game"
+
+[node name="MoneyLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 46.0
+offset_right = 214.0
+offset_bottom = 88.0
+text = "MONEY: 1000"
+label_settings = SubResource("LabelSettings_2kudt")
+script = ExtResource("5_7d3dc")
+
+[node name="ScoreLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 94.0
+offset_right = 214.0
+offset_bottom = 136.0
+text = "SCORE: 1234560"
+label_settings = SubResource("LabelSettings_2kudt")
+script = ExtResource("6_55kp7")
+
+[node name="OptionsMenu" type="Control" parent="Head/Eyes/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="Head/Eyes/PlayerUI/OptionsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.305
+anchor_top = 0.292
+anchor_right = 0.695
+anchor_bottom = 0.708
+offset_left = -0.360008
+offset_top = -0.216017
+offset_right = 0.35994
+offset_bottom = 0.215997
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+
+[node name="Options" type="Label" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer"]
+custom_minimum_size = Vector2(450, 239)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options"]
+custom_minimum_size = Vector2(450, 239)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 0.992
+offset_right = -0.100012
+offset_bottom = -0.0880104
+
+[node name="Buttons" type="Control" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer"]
+custom_minimum_size = Vector2(450, 239)
+layout_mode = 2
+
+[node name="HeadBob" type="CheckButton" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
+layout_mode = 1
+offset_left = 286.0
+offset_top = 44.0
+offset_right = 405.0
+offset_bottom = 75.0
+text = "HeadBob"
+
+[node name="ComingSoon" type="Label" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 117.0
+offset_right = 394.0
+offset_bottom = 167.0
+text = "More is Comming :)"
+label_settings = SubResource("LabelSettings_1t1bl")
+
+[node name="Close" type="Button" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -32.0
+offset_right = 43.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
+[node name="TimerContainer" type="Control" parent="Head/Eyes/PlayerUI"]
+layout_mode = 1
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.08
+offset_left = -0.552006
+offset_right = 0.551971
+offset_bottom = 0.159996
+grow_horizontal = 2
+script = ExtResource("5_acukg")
+time = 120.0
+
+[node name="Timer1" type="Label" parent="Head/Eyes/PlayerUI/TimerContainer"]
+layout_mode = 2
+anchor_left = 0.2
+anchor_right = 0.8
+offset_left = 218.691
+offset_top = 3.0
+offset_right = -137.691
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "000"
+label_settings = SubResource("LabelSettings_euq3r")
+horizontal_alignment = 2
+
+[node name="Timer2" type="Label" parent="Head/Eyes/PlayerUI/TimerContainer"]
+layout_mode = 2
+anchor_left = 0.2
+anchor_right = 0.8
+offset_left = 170.691
+offset_top = 3.0
+offset_right = -191.591
+offset_bottom = 45.0
+grow_horizontal = 2
+text = ".00"
+label_settings = SubResource("LabelSettings_euq3r")
+horizontal_alignment = 2
+
+[node name="Timer3" type="Label" parent="Head/Eyes/PlayerUI/TimerContainer"]
+layout_mode = 2
+anchor_left = 0.2
+anchor_right = 0.8
+offset_left = 126.691
+offset_top = 3.0
+offset_right = -235.591
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_euq3r")
+horizontal_alignment = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+light_energy = 0.1
+omni_range = 0.85
 
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.340957, 0)
@@ -68,3 +465,79 @@ mesh = SubResource("CapsuleMesh_ka62s")
 [node name="CrouchCheckRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 0.588527, 2.08165e-12)
 target_position = Vector3(2.08165e-12, 1, 2.08165e-12)
+
+[node name="KeyBillboards" type="Node3D" parent="."]
+
+[node name="PressKeyE" type="Sprite3D" parent="KeyBillboards"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+billboard = 1
+texture_filter = 2
+texture = SubResource("ViewportTexture_jlp4m")
+
+[node name="SubViewport" type="SubViewport" parent="KeyBillboards/PressKeyE"]
+transparent_bg = true
+size = Vector2i(1840, 420)
+
+[node name="Label" type="Label" parent="KeyBillboards/PressKeyE/SubViewport"]
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 362.0
+offset_bottom = 265.0
+text = "Releasse               take out items"
+label_settings = SubResource("LabelSettings_7ii1m")
+
+[node name="TextureRect" type="TextureRect" parent="KeyBillboards/PressKeyE/SubViewport"]
+offset_left = 500.0
+offset_top = -50.0
+offset_right = 1012.0
+offset_bottom = 462.0
+texture = ExtResource("3_wd4en")
+
+[node name="HoldKeyE" type="Sprite3D" parent="KeyBillboards"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+billboard = 1
+texture = SubResource("ViewportTexture_i2v2j")
+
+[node name="SubViewport" type="SubViewport" parent="KeyBillboards/HoldKeyE"]
+transparent_bg = true
+size = Vector2i(1140, 430)
+
+[node name="Label" type="Label" parent="KeyBillboards/HoldKeyE/SubViewport"]
+offset_left = 20.0
+offset_top = 110.0
+offset_right = 291.0
+offset_bottom = 275.0
+text = "Hold               to exit"
+label_settings = SubResource("LabelSettings_oreik")
+
+[node name="TextureRect" type="TextureRect" parent="KeyBillboards/HoldKeyE/SubViewport"]
+offset_left = 270.0
+offset_top = -50.0
+offset_right = 782.0
+offset_bottom = 462.0
+texture = ExtResource("3_wd4en")
+
+[node name="KeyE" type="MeshInstance3D" parent="KeyBillboards"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+layers = 2
+material_override = SubResource("StandardMaterial3D_ecie0")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_utgws")
+skeleton = NodePath("../..")
+
+[node name="LeftMouseButton" type="MeshInstance3D" parent="KeyBillboards"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_euc5n")
+mesh = SubResource("QuadMesh_0xyj0")
+
+[node name="LockIcon" type="MeshInstance3D" parent="KeyBillboards"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+layers = 2
+material_override = SubResource("StandardMaterial3D_7vmlr")
+mesh = SubResource("QuadMesh_dr7qk")
+
+[connection signal="pressed" from="Head/Eyes/PlayerUI/PauseMenu/TabContainer/Pause/Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Head/Eyes/PlayerUI/PauseMenu/TabContainer/Pause/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Head/Eyes/PlayerUI/PauseMenu/TabContainer/Pause/Buttons/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="toggled" from="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/HeadBob" to="." method="_on_head_bob_toggled"]
+[connection signal="pressed" from="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/Close" to="." method="_on_close_pressed"]

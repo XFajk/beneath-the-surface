@@ -1,10 +1,28 @@
 extends Node3D
-	
+
+@export var score: int = 100
+@export var tutorial_lable_pos: Vector3 = Vector3(0, 0.2, 0)
+@export var enable_tutorial_label: bool = false
+
+var take_particles: PackedScene = preload("res://assets/entities/TakeParticles.tscn")
+
 var interacter: Object = null
 	
 func start_interaction(new_interacter: Object) -> bool:
+	if enable_tutorial_label:
+		new_interacter.key_billboards.KEY_E.global_position = global_position+tutorial_lable_pos
+		new_interacter.key_billboards.KEY_E.set_visible(true)
+
 	if Input.is_action_just_pressed("take"):
-		queue_free()
+		if new_interacter.number_of_items < new_interacter.inventory_size:
+			var copy_particles: GPUParticles3D = take_particles.instantiate()
+			new_interacter.add_child(copy_particles)
+			copy_particles.global_position = global_position
+			global.score += score
+			new_interacter.number_of_items += 1
+			queue_free()
+		else:
+			new_interacter.active_cursor_shake = 5
 	return false
 	
 func interact() -> void:
