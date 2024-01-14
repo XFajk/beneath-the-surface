@@ -41,7 +41,6 @@ size = Vector3(0.2, 0.01, 0.1)
 [node name="Phone" type="StaticBody3D"]
 collision_mask = 3
 script = ExtResource("1_7au41")
-id = "Phone"
 enable_tutorial_label = true
 
 [node name="Cube" type="MeshInstance3D" parent="."]

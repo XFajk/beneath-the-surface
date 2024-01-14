@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 @onready var key_billboards: Dictionary = {
+	PRESS_KEY_E = $KeyBillboards/PressKeyE,
+	HOLD_KEY_E = $KeyBillboards/HoldKeyE,
 	KEY_E = $KeyBillboards/KeyE,
 	LEFT_MOUSE_BUTTON = $KeyBillboards/LeftMouseButton,
 	LOCK_ICON = $KeyBillboards/LockIcon
@@ -11,6 +13,7 @@ extends CharacterBody3D
 
 @onready var stamina_bar: ProgressBar = $Head/Eyes/PlayerUI/StaminaBar
 @onready var lockpicking_bar: ProgressBar = $Head/Eyes/PlayerUI/LockPickingBar
+@onready var hold_interaction_bar: ProgressBar = $Head/Eyes/PlayerUI/HoldInteractionBar
 
 @onready var main_camera: Camera3D = $Head/Eyes
 @onready var tutorial_camera: Camera3D = $Head/Eyes/SubViewportContainer/SubViewport/TutorialCamera
@@ -22,9 +25,8 @@ extends CharacterBody3D
 @onready var body_mesh: MeshInstance3D = $BodyMesh
 @onready var crouch_check: RayCast3D = $CrouchCheckRay
 
-@onready var inventory_container: VBoxContainer = $Head/Eyes/PlayerUI/PauseMenu/ScrollContainer/InventoryContainer
-var inventory_label_setting: LabelSettings = preload("res://assets/entities/InventoryLable.res")
-@export_range(3, 7, 1) var inventory_size: int = 2
+@export_range(3, 7, 1) var inventory_size: int = 3
+var number_of_items: int = 0
 
 @export_category("Mouse")
 @export var captured_mouse: bool = true
@@ -56,6 +58,8 @@ var reached_soft_limit: bool = false
 var jumped: bool = false
 
 @export_category("Crouch and Stand")
+var is_crouching: bool = false
+
 @export var go_to_chrouch_speed: float = 4.0
 
 @export var player_stand_heigh: float = 1.9
@@ -65,7 +69,7 @@ var jumped: bool = false
 @export var head_crouch_height: float = -0.5
 
 @export_category("Headbob")
-var head_bob_on: bool = true
+@onready var head_bob_on: bool = global.head_bob_on
 var head_bob_timmer: float = 0.0
 @export var head_bob_walk_speed: float = 10.0
 @export var head_bob_running_speed: float = 15.0
@@ -85,6 +89,8 @@ var in_interaction: bool = false
 var interactible: Object = null
 
 func _ready() -> void:
+	
+	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/HeadBob.button_pressed = global.head_bob_on
 	
 	# capture the mouse
 	if captured_mouse:
@@ -137,9 +143,11 @@ func _process(delta):
 	for key in key_billboards:
 		key_billboards[key].position = Vector3.ZERO
 		key_billboards[key].set_visible(false)
-		
+	
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		apply_interactions()
+	$Head/Eyes/PlayerUI/InventoryInfo.text = "ITEMS: %s/%s" % [inventory_size, number_of_items]
+		
 
 func _physics_process(delta: float) -> void:
 	
@@ -173,7 +181,9 @@ func apply_crouch(delta: float) -> void:
 		original_head_y = lerp(original_head_y, head_crouch_height, delta*go_to_chrouch_speed)
 		
 		crouch_check.position.y = lerp(crouch_check.position.y, player_crouch_heigh/2, delta*go_to_chrouch_speed)
-	elif not crouch_check.is_colliding():
+		
+		is_crouching = true
+	elif not crouch_check.is_colliding() or not is_crouching:
 		body_collision.shape.height = lerp(body_collision.shape.height, player_stand_heigh, delta*go_to_chrouch_speed)
 		body_mesh.mesh.height = lerp(body_mesh.mesh.height, player_stand_heigh, delta*go_to_chrouch_speed)
 		
@@ -181,6 +191,8 @@ func apply_crouch(delta: float) -> void:
 		original_head_y = lerp(original_head_y, head_stand_height, delta*go_to_chrouch_speed)
 		
 		crouch_check.position.y = lerp(crouch_check.position.y, player_stand_heigh/2, delta*go_to_chrouch_speed)
+		
+		is_crouching = false
 
 func apply_movement(direction: Vector3) -> Vector3:
 	
@@ -240,7 +252,7 @@ func apply_speed(direction: Vector3, delta: float = 1.0) -> Vector3:
 		)
 	
 	if direction.length():
-		if Input.is_action_pressed("crouch"):
+		if Input.is_action_pressed("crouch") or is_crouching:
 			current_speed = crouch_speed
 			head_bob_speed = head_bob_crouch_speed
 		elif Input.is_action_pressed("sprint") and stamina_bar.value > 1 and not reached_soft_limit:

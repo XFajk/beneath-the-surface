@@ -1,17 +1,25 @@
-[gd_scene load_steps=23 format=3 uid="uid://crbsr60t6r1m7"]
+[gd_scene load_steps=32 format=3 uid="uid://crbsr60t6r1m7"]
 
 [ext_resource type="Script" path="res://src/entities/player.gd" id="1_7dypm"]
 [ext_resource type="Environment" uid="uid://kttecvt1ttwi" path="res://assets/entities/GameEnv.res" id="2_vc100"]
-[ext_resource type="Script" path="res://src/UI/sub_viewport_res_setter.gd" id="3_oayfa"]
 [ext_resource type="Texture2D" uid="uid://c7tcfslg2mnje" path="res://assets/sprites/E.png" id="3_wd4en"]
 [ext_resource type="Texture2D" uid="uid://bbonv0wcj780o" path="res://assets/sprites/Mouse.png" id="4_m0tmw"]
 [ext_resource type="Texture2D" uid="uid://bj4n2cdjwge15" path="res://assets/sprites/crosshair.svg" id="4_wrldi"]
+[ext_resource type="Script" path="res://src/UI/money_lable.gd" id="5_7d3dc"]
 [ext_resource type="Script" path="res://src/UI/timer.gd" id="5_acukg"]
+[ext_resource type="LabelSettings" uid="uid://dm7x4ep8081ml" path="res://assets/entities/InventoryLable.res" id="5_vxbpb"]
+[ext_resource type="Script" path="res://src/UI/score_label.gd" id="6_55kp7"]
 [ext_resource type="Texture2D" uid="uid://cway3ky1o72l4" path="res://assets/sprites/Lock.png" id="7_3e0sb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bc8x3"]
 radius = 0.3
 height = 1.9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeyrw"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1b12i"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glmdn"]
 bg_color = Color(0, 0, 0, 0.196078)
@@ -25,6 +33,11 @@ bg_color = Color(0, 0, 0, 0.172549)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ald7"]
 bg_color = Color(1, 0.407843, 0.337255, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_2kudt"]
+font_size = 30
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_1t1bl"]
 font_size = 36
 
@@ -36,6 +49,22 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ka62s"]
 radius = 0.3
 height = 1.9
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jlp4m"]
+viewport_path = NodePath("KeyBillboards/PressKeyE/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ii1m"]
+font_size = 120
+outline_size = 80
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i2v2j"]
+viewport_path = NodePath("KeyBillboards/HoldKeyE/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_oreik"]
+font_size = 120
+outline_size = 80
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecie0"]
 transparency = 1
@@ -109,7 +138,6 @@ transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
-script = ExtResource("3_oayfa")
 
 [node name="TutorialCamera" type="Camera3D" parent="Head/Eyes/SubViewportContainer/SubViewport"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, 0)
@@ -139,6 +167,24 @@ grow_vertical = 2
 texture_filter = 4
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("4_wrldi")
+
+[node name="HoldInteractionBar" type="ProgressBar" parent="Head/Eyes/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 38.79
+offset_right = 50.0
+offset_bottom = 45.79
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_yeyrw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1b12i")
+show_percentage = false
 
 [node name="LockPickingBar" type="ProgressBar" parent="Head/Eyes/PlayerUI"]
 visible = false
@@ -173,6 +219,14 @@ theme_override_styles/background = SubResource("StyleBoxFlat_2n8ag")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4ald7")
 value = 100.0
 show_percentage = false
+
+[node name="InventoryInfo" type="Label" parent="Head/Eyes/PlayerUI"]
+layout_mode = 0
+offset_left = 20.0
+offset_right = 74.0
+offset_bottom = 49.0
+text = "ITEMS: 0/0"
+label_settings = ExtResource("5_vxbpb")
 
 [node name="PauseMenu" type="Control" parent="Head/Eyes/PlayerUI"]
 visible = false
@@ -253,32 +307,25 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Exit Game"
 
-[node name="ColorRect" type="ColorRect" parent="Head/Eyes/PlayerUI/PauseMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.08
-anchor_top = 0.18
-anchor_right = 0.26
-anchor_bottom = 0.6
-offset_left = 0.143993
-offset_top = -0.312006
-offset_right = 0.343983
-offset_bottom = -0.240036
-grow_vertical = 2
-color = Color(0, 0, 0, 0.109804)
+[node name="MoneyLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 46.0
+offset_right = 214.0
+offset_bottom = 88.0
+text = "MONEY: 1000"
+label_settings = SubResource("LabelSettings_2kudt")
+script = ExtResource("5_7d3dc")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Head/Eyes/PlayerUI/PauseMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.2
-anchor_right = 0.26
-anchor_bottom = 0.6
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="InventoryContainer" type="VBoxContainer" parent="Head/Eyes/PlayerUI/PauseMenu/ScrollContainer"]
-layout_mode = 2
+[node name="ScoreLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 94.0
+offset_right = 214.0
+offset_bottom = 136.0
+text = "SCORE: 1234560"
+label_settings = SubResource("LabelSettings_2kudt")
+script = ExtResource("6_55kp7")
 
 [node name="OptionsMenu" type="Control" parent="Head/Eyes/PlayerUI"]
 visible = false
@@ -327,7 +374,6 @@ offset_left = 286.0
 offset_top = 44.0
 offset_right = 405.0
 offset_bottom = 75.0
-button_pressed = true
 text = "HeadBob"
 
 [node name="ComingSoon" type="Label" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
@@ -405,6 +451,11 @@ text = "00"
 label_settings = SubResource("LabelSettings_euq3r")
 horizontal_alignment = 2
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+light_energy = 0.1
+omni_range = 0.85
+
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_ka62s")
@@ -415,7 +466,57 @@ target_position = Vector3(2.08165e-12, 1, 2.08165e-12)
 
 [node name="KeyBillboards" type="Node3D" parent="."]
 
+[node name="PressKeyE" type="Sprite3D" parent="KeyBillboards"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+billboard = 1
+texture_filter = 2
+texture = SubResource("ViewportTexture_jlp4m")
+
+[node name="SubViewport" type="SubViewport" parent="KeyBillboards/PressKeyE"]
+transparent_bg = true
+size = Vector2i(1840, 420)
+
+[node name="Label" type="Label" parent="KeyBillboards/PressKeyE/SubViewport"]
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 362.0
+offset_bottom = 265.0
+text = "Releasse               take out items"
+label_settings = SubResource("LabelSettings_7ii1m")
+
+[node name="TextureRect" type="TextureRect" parent="KeyBillboards/PressKeyE/SubViewport"]
+offset_left = 500.0
+offset_top = -50.0
+offset_right = 1012.0
+offset_bottom = 462.0
+texture = ExtResource("3_wd4en")
+
+[node name="HoldKeyE" type="Sprite3D" parent="KeyBillboards"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+billboard = 1
+texture = SubResource("ViewportTexture_i2v2j")
+
+[node name="SubViewport" type="SubViewport" parent="KeyBillboards/HoldKeyE"]
+transparent_bg = true
+size = Vector2i(1140, 430)
+
+[node name="Label" type="Label" parent="KeyBillboards/HoldKeyE/SubViewport"]
+offset_left = 20.0
+offset_top = 110.0
+offset_right = 291.0
+offset_bottom = 275.0
+text = "Hold               to exit"
+label_settings = SubResource("LabelSettings_oreik")
+
+[node name="TextureRect" type="TextureRect" parent="KeyBillboards/HoldKeyE/SubViewport"]
+offset_left = 270.0
+offset_top = -50.0
+offset_right = 782.0
+offset_bottom = 462.0
+texture = ExtResource("3_wd4en")
+
 [node name="KeyE" type="MeshInstance3D" parent="KeyBillboards"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 layers = 2
 material_override = SubResource("StandardMaterial3D_ecie0")
 cast_shadow = 0

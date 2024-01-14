@@ -9,7 +9,7 @@ func _ready():
 	set_collision_layer_value(1, true)
 	set_collision_layer_value(2, true)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if interacter != null:
 		interact()
 

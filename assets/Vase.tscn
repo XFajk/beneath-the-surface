@@ -5,6 +5,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umg51"]
 albedo_texture = ExtResource("2_hdalj")
+roughness = 0.43
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0saeh"]

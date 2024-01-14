@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2cnebhg4cik3"]
+[gd_scene load_steps=21 format=3 uid="uid://b2cnebhg4cik3"]
 
 [ext_resource type="PackedScene" uid="uid://crbsr60t6r1m7" path="res://assets/entities/Player.tscn" id="1_d5rw3"]
+[ext_resource type="Script" path="res://src/objects/leave_door.gd" id="1_r6lb6"]
 [ext_resource type="Script" path="res://src/objects/pickupeble.gd" id="2_5wslg"]
 [ext_resource type="PackedScene" uid="uid://bhee1m87cr60r" path="res://assets/furniture/coffe_table.tscn" id="2_hxqk0"]
 [ext_resource type="PackedScene" uid="uid://dbrmrwi44hin1" path="res://assets/phone.tscn" id="3_pbs85"]
@@ -8,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://bsa7gwjdue2fm" path="res://assets/furniture/frezer.tscn" id="5_vo14s"]
 [ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/sofa.tscn" id="6_5ud22"]
 [ext_resource type="PackedScene" uid="uid://bm6bavpghwj26" path="res://assets/Vase.tscn" id="8_lulrj"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_riuyq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uq1q0"]
+points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2jjm"]
 albedo_color = Color(0.192157, 0.545098, 0.121569, 1)
@@ -41,11 +47,23 @@ radial_segments = 10
 
 [node name="Node3D" type="Node3D"]
 
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8346, 0.380519, 4.5444)
+script = ExtResource("1_r6lb6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.2, 0)
+mesh = SubResource("PrismMesh_riuyq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.2, 0)
+shape = SubResource("ConvexPolygonShape3D_uq1q0")
+
 [node name="Player" parent="." instance=ExtResource("1_d5rw3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.15, 2.45)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(12.5, 2.12796e-09, 0, -2.30359e-07, 0.0866025, -6.475, -1.32998e-07, 0.05, 11.215, -0.0528002, 3.15, -12.1)
+transform = Transform3D(12.5, 2.12796e-09, -3.44641e-15, -2.30359e-07, 0.0866025, -6.475, -1.32998e-07, 0.05, 11.215, -0.0528002, 3.15, -12.1)
 material_override = SubResource("StandardMaterial3D_a2jjm")
 mesh = SubResource("BoxMesh_n5ghq")
 skeleton = NodePath("../MeshInstance3D")
