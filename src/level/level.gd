@@ -16,7 +16,8 @@ var medium_items: Array = [preload("res://assets/Laptop.tscn"), preload("res://a
 var large_items: Array = [preload("res://assets/Vase.tscn"), preload("res://assets/Console.tscn")]
 
 @onready var music: AudioStreamPlayer = $AudioStreamPlayer
-var time = 45
+@onready var music_timer: Timer = $AudioStreamPlayer/Music_Timer
+@onready var time = $Player/Head/Eyes/PlayerUI/TimerContainer.time
 
 func _ready():
 	randomize()
@@ -59,9 +60,15 @@ func _ready():
 		item.global_position = pos
 		item.rotation.y = randf_range(-180, 180)
 		
-	music.play(93 - time)
+	if time < 93:
+		music.play(93 - time)
+	else:
+		music_timer.start(time - 93)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if music.volume_db < -2:
-		music.volume_db += 33 * delta
+		music.volume_db += 32 * delta
+
+func _on_music_timer_timeout():
+	music.play()

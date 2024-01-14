@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://src/objects/leave_door.gd" id="1_r6lb6"]
 [ext_resource type="Script" path="res://src/objects/pickupeble.gd" id="2_5wslg"]
 [ext_resource type="PackedScene" uid="uid://bhee1m87cr60r" path="res://assets/furniture/coffe_table.tscn" id="2_hxqk0"]
-[ext_resource type="PackedScene" uid="uid://dbrmrwi44hin1" path="res://assets/Phone.tscn" id="3_pbs85"]
-[ext_resource type="PackedScene" uid="uid://bbqekuufjshr1" path="res://assets/Console.tscn" id="4_lwe3y"]
+[ext_resource type="PackedScene" uid="uid://dbrmrwi44hin1" path="res://assets/phone.tscn" id="3_pbs85"]
+[ext_resource type="PackedScene" uid="uid://bbqekuufjshr1" path="res://assets/console.tscn" id="4_lwe3y"]
 [ext_resource type="PackedScene" uid="uid://bsa7gwjdue2fm" path="res://assets/furniture/frezer.tscn" id="5_vo14s"]
-[ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/sofa.tscn" id="6_5ud22"]
+[ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/Sofa.tscn" id="6_5ud22"]
 [ext_resource type="PackedScene" uid="uid://bm6bavpghwj26" path="res://assets/Vase.tscn" id="8_lulrj"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_riuyq"]

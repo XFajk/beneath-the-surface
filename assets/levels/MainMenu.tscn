@@ -129,6 +129,7 @@ custom_minimum_size = Vector2(450, 350)
 layout_mode = 2
 
 [node name="HeadBob" type="CheckButton" parent="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons"]
+layout_mode = 0
 offset_left = 286.0
 offset_top = 44.0
 offset_right = 405.0
@@ -137,6 +138,7 @@ button_pressed = true
 text = "HeadBob"
 
 [node name="ComingSoon" type="Label" parent="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons"]
+layout_mode = 0
 offset_left = 62.0
 offset_top = 146.0
 offset_right = 396.0

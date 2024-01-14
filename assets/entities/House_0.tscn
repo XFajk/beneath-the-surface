@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://o33d3gs7y8xp"]
+[gd_scene load_steps=136 format=3 uid="uid://o33d3gs7y8xp"]
 
 [ext_resource type="Texture2D" uid="uid://eacxtydvk61u" path="res://assets/models_and_materials/house0_walls.png" id="1_jx01a"]
 [ext_resource type="Texture2D" uid="uid://drejtbtv77rci" path="res://assets/models_and_materials/house0_doors.png" id="2_25wca"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://5nwahcrqnkey" path="res://assets/models_and_materials/house0_doorknob.png" id="3_bxf12"]
 [ext_resource type="Texture2D" uid="uid://dy7p1t24th5r1" path="res://assets/models_and_materials/house0_floortexture.png" id="5_15a3m"]
 [ext_resource type="Texture2D" uid="uid://458eky65iw30" path="res://assets/models_and_materials/house0_ceeling_texture.png" id="6_x3vgg"]
+[ext_resource type="Script" path="res://src/objects/leave_door.gd" id="7_5fecj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i56vm"]
 resource_name = "wall material"
@@ -1972,8 +1973,10 @@ mesh = SubResource("ArrayMesh_jbx7t")
 skeleton = NodePath("")
 
 [node name="Door_2" type="StaticBody3D" parent="."]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1.04404, 1.11, 5.62809)
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1.04478, 1.11185, 5.62671)
 script = ExtResource("2_wy47c")
+start_door_angle = 90.0
+open_door_angle = 200.0
 
 [node name="Door_001" type="MeshInstance3D" parent="Door_2"]
 mesh = SubResource("ArrayMesh_8nmrs")
@@ -2002,6 +2005,7 @@ skeleton = NodePath("")
 [node name="Door_1" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.7547, 1.11, 7.75016)
 script = ExtResource("2_wy47c")
+start_door_angle = -90.0
 open_door_angle = -200.0
 
 [node name="Door_002" type="MeshInstance3D" parent="Door_1"]
@@ -2031,6 +2035,8 @@ skeleton = NodePath("")
 [node name="Door_3" type="StaticBody3D" parent="."]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1.03057, 1.11497, 4.25274)
 script = ExtResource("2_wy47c")
+start_door_angle = 90.0
+open_door_angle = -20.0
 
 [node name="Door_003" type="MeshInstance3D" parent="Door_3"]
 mesh = SubResource("ArrayMesh_mju5y")
@@ -2087,6 +2093,8 @@ skeleton = NodePath("")
 [node name="Door_5" type="StaticBody3D" parent="."]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.36366, 1.11, 2.63678)
 script = ExtResource("2_wy47c")
+start_door_angle = 90.0
+open_door_angle = -50.0
 
 [node name="Door_005" type="MeshInstance3D" parent="Door_5"]
 mesh = SubResource("ArrayMesh_chssy")
@@ -2115,6 +2123,8 @@ skeleton = NodePath("")
 [node name="Door_6" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.47883, 1.11, 1.01495)
 script = ExtResource("2_wy47c")
+start_door_angle = -180.0
+open_door_angle = -30.0
 
 [node name="Door_006" type="MeshInstance3D" parent="Door_6"]
 mesh = SubResource("ArrayMesh_pg1rh")
@@ -2143,6 +2153,8 @@ skeleton = NodePath("")
 [node name="Door_7" type="StaticBody3D" parent="."]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.26528, 1.11, 0.62167)
 script = ExtResource("2_wy47c")
+start_door_angle = -90.0
+open_door_angle = 15.0
 
 [node name="Door_007" type="MeshInstance3D" parent="Door_7"]
 mesh = SubResource("ArrayMesh_4k57o")
@@ -2203,6 +2215,8 @@ shape = SubResource("ConcavePolygonShape3D_mfylw")
 
 [node name="Main_Door" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.04661, 1.11665, 11.3761)
+script = ExtResource("7_5fecj")
+tutorial_lable_pos = Vector3(0.37, 0.2, 0.215)
 
 [node name="Door" type="MeshInstance3D" parent="Main_Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00589466, -0.00664556, -0.000217438)

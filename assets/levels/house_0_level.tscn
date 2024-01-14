@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://itt32aeoiqgd"]
+[gd_scene load_steps=25 format=3 uid="uid://itt32aeoiqgd"]
 
 [ext_resource type="Script" path="res://src/level/level.gd" id="1_1qqdo"]
 [ext_resource type="PackedScene" uid="uid://o33d3gs7y8xp" path="res://assets/entities/House_0.tscn" id="1_hg2ds"]
-[ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/sofa.tscn" id="2_v5mqd"]
+[ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/Sofa.tscn" id="2_v5mqd"]
 [ext_resource type="PackedScene" uid="uid://bhee1m87cr60r" path="res://assets/furniture/coffe_table.tscn" id="3_psrcu"]
 [ext_resource type="PackedScene" uid="uid://dhrh4fi20xl6o" path="res://assets/furniture/kitchen_shelf.tscn" id="4_lv07o"]
 [ext_resource type="PackedScene" uid="uid://bv6hgliu857hb" path="res://assets/furniture/dining_table.tscn" id="5_q3usu"]
@@ -12,11 +12,18 @@
 [ext_resource type="PackedScene" uid="uid://bw8nipjxyndak" path="res://assets/furniture/bed_table.tscn" id="9_bi60c"]
 [ext_resource type="PackedScene" uid="uid://bq4bpjf24h2bk" path="res://assets/furniture/plastic_chair.tscn" id="10_20mxc"]
 [ext_resource type="PackedScene" uid="uid://5ab8k7hakbmk" path="res://assets/furniture/bath.tscn" id="11_um4dh"]
-[ext_resource type="PackedScene" uid="uid://b7ofbe7xyrhmy" path="res://assets/furniture/remote.tscn" id="12_q06ll"]
+[ext_resource type="PackedScene" uid="uid://b7ofbe7xyrhmy" path="res://assets/furniture/Remote.tscn" id="12_q06ll"]
 [ext_resource type="PackedScene" uid="uid://1s6ihgwrfykt" path="res://assets/furniture/flatscreen.tscn" id="13_kiu8w"]
 [ext_resource type="PackedScene" uid="uid://by6u67fnvegx6" path="res://assets/furniture/kitchen_counter.tscn" id="14_n2667"]
 [ext_resource type="PackedScene" uid="uid://dmhv44po64pyn" path="res://assets/furniture/washing_machine.tscn" id="16_mb5gm"]
 [ext_resource type="AudioStream" uid="uid://rwqtp0vydqhn" path="res://assets/sounds/stealth.wav" id="17_ecjlw"]
+[ext_resource type="PackedScene" uid="uid://c356jp1wycvr5" path="res://assets/furniture/Work_Desk.tscn" id="17_ymwgk"]
+[ext_resource type="PackedScene" uid="uid://dcd5uimleyijq" path="res://assets/furniture/Kitchen_Bar.tscn" id="18_xee11"]
+[ext_resource type="PackedScene" uid="uid://cvf7jx0ogts1x" path="res://assets/furniture/Work_Chair.tscn" id="19_50b36"]
+[ext_resource type="PackedScene" uid="uid://vkgqrjfnj2n5" path="res://assets/furniture/high_plastic_chair.tscn" id="21_6jemm"]
+[ext_resource type="PackedScene" uid="uid://b6k2i705arkjr" path="res://assets/furniture/Shelf.tscn" id="22_218qd"]
+[ext_resource type="PackedScene" uid="uid://vjhir02otwo5" path="res://assets/furniture/Toilet.tscn" id="22_e1vgr"]
+[ext_resource type="PackedScene" uid="uid://cennj0hm1y4ht" path="res://assets/furniture/Toilet_Paper.tscn" id="24_q5ep1"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
@@ -30,7 +37,10 @@ transform = Transform3D(-0.779796, 0, 0.0178186, 0, 0.78, 0, -0.0178186, 0, -0.7
 mouse_sensitivity = 0.25
 
 [node name="remote" parent="." instance=ExtResource("12_q06ll")]
-transform = Transform3D(-0.352136, 0, -0.935949, 0, 1, 0, 0.935949, 0, -0.352136, -5.39673, 0.839641, -14.4474)
+transform = Transform3D(-0.352136, 0, -0.935949, 0, 1, 0, 0.935949, 0, -0.352136, -5.39673, 0.98443, -14.4474)
+
+[node name="work_chair" parent="." instance=ExtResource("19_50b36")]
+transform = Transform3D(-0.560784, 0, 0.827962, 0, 1, 0, -0.827962, 0, -0.560784, -0.920766, 0.0779479, -8.92494)
 
 [node name="Static_Furniture" type="Node3D" parent="."]
 
@@ -104,7 +114,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.8004
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.80044, 2.53268, -11.8004)
 
 [node name="coffe_table" parent="Static_Furniture" instance=ExtResource("3_psrcu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.95921, 0.772173, -15.0159)
+transform = Transform3D(1, 0, 0, 0, 1.155, 0, 0, 0, 1, -5.95901, 0.896924, -15.0159)
 
 [node name="sofa2" parent="Static_Furniture" instance=ExtResource("2_v5mqd")]
 transform = Transform3D(-0.999137, 0, -0.0415268, 0, 1, 0, 0.0415268, 0, -0.999137, -3.41535, 0.22, -15.0059)
@@ -117,6 +127,39 @@ transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 6.87454,
 
 [node name="washing_machine2" parent="Static_Furniture" instance=ExtResource("16_mb5gm")]
 transform = Transform3D(-0.999665, 0, 0.0258626, 0, 1, 0, -0.0258626, 0, -0.999665, 6.86677, 0.628544, -2.0717)
+
+[node name="work_desk" parent="Static_Furniture" instance=ExtResource("17_ymwgk")]
+transform = Transform3D(0.56, 0, 0, 0, 0.465, 0, 0, 0, 0.56, -2.3636, -0.0159168, -8.21897)
+
+[node name="kitchen_bar" parent="Static_Furniture" instance=ExtResource("18_xee11")]
+transform = Transform3D(-0.525, 0, -4.19629e-08, 0, 0.48, 0, 4.5897e-08, 0, -0.48, 3.31472, -0.18954, -10.7001)
+
+[node name="high_plastic_chair" parent="Static_Furniture" instance=ExtResource("21_6jemm")]
+transform = Transform3D(0.998963, 0, -0.0455199, 0, 1, 0, 0.0455199, 0, 0.998963, 1.48589, 0.936694, -12.3183)
+
+[node name="high_plastic_chair2" parent="Static_Furniture" instance=ExtResource("21_6jemm")]
+transform = Transform3D(0.988473, 0, 0.151399, 0, 1, 0, -0.151399, 0, 0.988473, 1.53793, 0.936694, -11.1927)
+
+[node name="high_plastic_chair3" parent="Static_Furniture" instance=ExtResource("21_6jemm")]
+transform = Transform3D(0.985334, 0, -0.170639, 0, 1, 0, 0.170639, 0, 0.985334, 1.42026, 0.902033, -10.1911)
+
+[node name="high_plastic_chair4" parent="Static_Furniture" instance=ExtResource("21_6jemm")]
+transform = Transform3D(0.900827, 0, 0.434178, 0, 1, 0, -0.434178, 0, 0.900827, 1.53438, 0.92279, -9.19991)
+
+[node name="shelf" parent="Static_Furniture" instance=ExtResource("22_218qd")]
+transform = Transform3D(-1.51, 0, -1.5605e-07, 0, 1.31, 0, 1.32008e-07, 0, -1.785, -2.41488, -0.0121963, 5.99784)
+
+[node name="shelf2" parent="Static_Furniture" instance=ExtResource("22_218qd")]
+transform = Transform3D(8.9407e-08, 0, -1.785, 0, 1.31, 0, 1.51, 0, 1.49012e-07, 4.93589, -0.0121963, 0.570478)
+
+[node name="shelf3" parent="Static_Furniture" instance=ExtResource("22_218qd")]
+transform = Transform3D(1.51, 0, 3.12099e-07, 0, 1.31, 0, -2.64017e-07, 0, 1.785, -1.66652, -0.0121963, 0.12553)
+
+[node name="shelf4" parent="Static_Furniture" instance=ExtResource("22_218qd")]
+transform = Transform3D(-3.30021e-07, 0, 1.785, 0, 1.31, 0, -1.51, 0, -3.90124e-07, -8.78007, -0.0121963, -4.59393)
+
+[node name="toilet" parent="Static_Furniture" instance=ExtResource("22_e1vgr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.24505, 1.19209e-07, 1.14316)
 
 [node name="Spawn_Positions" type="Node3D" parent="."]
 
@@ -237,3 +280,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53666, 0.0757067, 6.90399)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_ecjlw")
 volume_db = 0.819
+
+[node name="Music_Timer" type="Timer" parent="AudioStreamPlayer"]
+one_shot = true
+
+[node name="toilet_paper" parent="." instance=ExtResource("24_q5ep1")]
+transform = Transform3D(-2.285, 0, 1.99761e-07, 0, 2.285, 0, -1.99761e-07, 0, -2.285, -4.1502, 0.840747, 0.539753)
+
+[connection signal="timeout" from="AudioStreamPlayer/Music_Timer" to="." method="_on_music_timer_timeout"]

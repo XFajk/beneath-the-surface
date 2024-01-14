@@ -192,6 +192,8 @@ shape = SubResource("ConcavePolygonShape3D_eeerp")
 [node name="Empty" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68816, 0.0200728, 0.449333)
 script = ExtResource("2_w1bj5")
+tutorial_lable_pos = Vector3(-0.12, -0.255, -0.55)
+enable_tutorial_lable = true
 
 [node name="door" type="MeshInstance3D" parent="Empty"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.414178, -0.00961542, 0.00378722)
@@ -206,6 +208,9 @@ shape = SubResource("ConvexPolygonShape3D_8ua3i")
 [node name="Empty_001" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0103372, 0.0200728, 0.449333)
 script = ExtResource("2_w1bj5")
+tutorial_lable_pos = Vector3(-0.12, -0.255, 0.55)
+enable_tutorial_lable = true
+open_door_angle = -90.0
 
 [node name="door_001" type="MeshInstance3D" parent="Empty_001"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.413523, -0.00961542, 0.00378722)
@@ -220,6 +225,8 @@ shape = SubResource("ConvexPolygonShape3D_o71nm")
 [node name="Empty_002" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00852451, 0.0200728, 0.449333)
 script = ExtResource("2_w1bj5")
+tutorial_lable_pos = Vector3(-0.12, -0.255, -0.55)
+enable_tutorial_lable = true
 
 [node name="door_002" type="MeshInstance3D" parent="Empty_002"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412862, -0.00961542, 0.00378722)
@@ -234,6 +241,9 @@ shape = SubResource("ConvexPolygonShape3D_fousd")
 [node name="Empty_003" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6888, 0.0200728, 0.449333)
 script = ExtResource("2_w1bj5")
+tutorial_lable_pos = Vector3(-0.12, -0.255, 0.55)
+enable_tutorial_lable = true
+open_door_angle = -90.0
 
 [node name="door_003" type="MeshInstance3D" parent="Empty_003"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.414935, -0.00961542, 0.00378722)
