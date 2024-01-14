@@ -1,8 +1,10 @@
 extends RigidBody3D
 
-@export var id: String = "----"
+@export var score: int = 100
 @export var tutorial_lable_pos: Vector3 = Vector3(0, 0.2, 0)
 @export var enable_tutorial_lable: bool = false
+
+var take_particles: PackedScene = preload("res://assets/entities/TakeParticles.tscn")
 
 var interacter: Object = null
 
@@ -11,7 +13,7 @@ func _ready():
 	set_collision_layer_value(2, true)
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if interacter != null:
 		interact()
 
@@ -29,11 +31,12 @@ func start_interaction(new_interacter: Object) -> bool:
 		return true
 	
 	if Input.is_action_just_pressed("take"):
-		if new_interacter.inventory_container.get_children().size() <= new_interacter.inventory_size:
-			var label: Label = Label.new()
-			label.label_settings = new_interacter.inventory_label_setting
-			label.text = id
-			new_interacter.inventory_container.add_child(label)
+		if new_interacter.number_of_items < new_interacter.inventory_size:
+			var copy_particles: GPUParticles3D = take_particles.instantiate()
+			new_interacter.add_child(copy_particles)
+			copy_particles.global_position = global_position
+			global.score += score
+			new_interacter.number_of_items += 1
 			queue_free()
 		else:
 			new_interacter.active_cursor_shake = 5

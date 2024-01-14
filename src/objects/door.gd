@@ -24,7 +24,7 @@ func _ready():
 	rotation_degrees.y = start_door_angle
 	
 
-func _process(delta):
+func _process(_delta):
 	if interacter != null:
 		interact()
 
