@@ -220,6 +220,9 @@ func apply_gravity(direction: Vector3, delat: float = 1.0) -> Vector3:
 			vertical_speed = abs(jump_strength)
 			jumped = true
 		
+	if is_on_ceiling():
+		vertical_speed = -10
+		
 		
 	vertical_speed = clamp(vertical_speed, -60, abs(jump_strength))
 	direction.y += vertical_speed

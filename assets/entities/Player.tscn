@@ -13,7 +13,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bc8x3"]
 radius = 0.3
-height = 1.9
+height = 2.1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeyrw"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 0.392157)
@@ -48,7 +48,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ka62s"]
 radius = 0.3
-height = 1.9
+height = 2.1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jlp4m"]
 viewport_path = NodePath("KeyBillboards/PressKeyE/SubViewport")
@@ -101,6 +101,8 @@ stamina_delition = 30.0
 stamina_regeneration = 10.0
 stamina_bar_blink_speed = 10.0
 stamina_bar_color_lerp_speed = 10.0
+player_stand_heigh = 2.1
+head_stand_height = 0.75
 player_crouch_heigh = 0.7
 head_crouch_height = 0.2
 head_bob_ammount = 20.0
@@ -109,7 +111,7 @@ head_bob_ammount = 20.0
 shape = SubResource("CapsuleShape3D_bc8x3")
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
 
 [node name="Eyes" type="Camera3D" parent="Head"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -461,8 +463,8 @@ cast_shadow = 0
 mesh = SubResource("CapsuleMesh_ka62s")
 
 [node name="CrouchCheckRay" type="RayCast3D" parent="."]
-transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 0.95, 2.08165e-12)
-target_position = Vector3(2.08165e-12, 1, 2.08165e-12)
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 1.05, 2.08165e-12)
+target_position = Vector3(2.08165e-12, 0.5, 2.08165e-12)
 
 [node name="KeyBillboards" type="Node3D" parent="."]
 
