@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://crbsr60t6r1m7"]
+[gd_scene load_steps=32 format=3 uid="uid://crbsr60t6r1m7"]
 
 [ext_resource type="Script" path="res://src/entities/player.gd" id="1_7dypm"]
 [ext_resource type="Environment" uid="uid://kttecvt1ttwi" path="res://assets/entities/GameEnv.res" id="2_vc100"]
@@ -39,9 +39,6 @@ bg_color = Color(1, 0.407843, 0.337255, 1)
 font_size = 30
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_1t1bl"]
-font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_euq3r"]
 font_size = 30
@@ -98,7 +95,6 @@ size = Vector2(0.2, 0.2)
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_7dypm")
 inventory_size = 5
-mouse_sensitivity = 0.18
 acceleration = 7.0
 stamina_delition = 20.0
 stamina_regeneration = 15.0
@@ -235,12 +231,28 @@ offset_bottom = 49.0
 text = "ITEMS: 0/0"
 label_settings = ExtResource("5_vxbpb")
 
+[node name="ScoreLabel" type="Label" parent="Head/Eyes/PlayerUI"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 46.0
+offset_right = 250.0
+offset_bottom = 88.0
+text = "SCORE: 1234560"
+label_settings = SubResource("LabelSettings_2kudt")
+script = ExtResource("6_55kp7")
+
 [node name="PauseMenu" type="Control" parent="Head/Eyes/PlayerUI"]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -251,10 +263,10 @@ anchor_left = 0.398
 anchor_top = 0.286
 anchor_right = 0.602
 anchor_bottom = 0.714
-offset_left = 0.503963
-offset_top = 0.171991
-offset_right = -0.504066
-offset_bottom = -0.17203
+offset_left = 0.503967
+offset_top = 0.171997
+offset_right = -0.504089
+offset_bottom = -0.172028
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
@@ -314,16 +326,6 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Exit Game"
 
-[node name="ScoreLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 46.0
-offset_right = 250.0
-offset_bottom = 88.0
-text = "SCORE: 1234560"
-label_settings = SubResource("LabelSettings_2kudt")
-script = ExtResource("6_55kp7")
-
 [node name="MoneyLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
 visible = false
 layout_mode = 0
@@ -338,9 +340,11 @@ script = ExtResource("5_7d3dc")
 [node name="OptionsMenu" type="Control" parent="Head/Eyes/PlayerUI"]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -351,10 +355,10 @@ anchor_left = 0.305
 anchor_top = 0.292
 anchor_right = 0.695
 anchor_bottom = 0.708
-offset_left = -0.360008
-offset_top = -0.216017
-offset_right = 0.35994
-offset_bottom = 0.215997
+offset_left = -225.0
+offset_top = -135.0
+offset_right = 225.0
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
@@ -376,22 +380,14 @@ offset_bottom = -0.0880104
 custom_minimum_size = Vector2(450, 239)
 layout_mode = 2
 
-[node name="HeadBob" type="CheckButton" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
+[node name="HeadBob" type="CheckBox" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
 layout_mode = 1
 offset_left = 286.0
 offset_top = 44.0
 offset_right = 405.0
 offset_bottom = 75.0
+button_pressed = true
 text = "HeadBob"
-
-[node name="ComingSoon" type="Label" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
-layout_mode = 0
-offset_left = 60.0
-offset_top = 117.0
-offset_right = 394.0
-offset_bottom = 167.0
-text = "More is Comming :)"
-label_settings = SubResource("LabelSettings_1t1bl")
 
 [node name="Close" type="Button" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
 layout_mode = 1
@@ -407,6 +403,67 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Close"
+
+[node name="AspectDropDown" type="OptionButton" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
+offset_left = 43.0
+offset_top = 80.0
+offset_right = 161.0
+offset_bottom = 111.0
+item_count = 3
+selected = 1
+popup/item_0/text = "4:3"
+popup/item_0/id = 0
+popup/item_1/text = "16:9"
+popup/item_1/id = 1
+popup/item_2/text = "16:10"
+popup/item_2/id = 2
+
+[node name="Name" type="Label" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/AspectDropDown"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 249.0
+offset_top = -11.5
+offset_right = 353.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Aspect"
+
+[node name="SensitivitySlider" type="HSlider" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
+offset_left = 47.0
+offset_top = 140.0
+offset_right = 160.0
+offset_bottom = 156.0
+min_value = 0.01
+max_value = 0.1
+step = 0.005
+value = 0.01
+
+[node name="Name" type="Label" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/SensitivitySlider"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 248.0
+offset_top = -10.0
+offset_right = 323.0
+offset_bottom = 13.0
+grow_vertical = 2
+text = "Sensitivty"
+
+[node name="Value" type="Label" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/SensitivitySlider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = -25.0
+offset_right = 12.5
+offset_bottom = -2.0
+grow_horizontal = 2
+text = "0.0
+"
 
 [node name="TimerContainer" type="Control" parent="Head/Eyes/PlayerUI"]
 layout_mode = 1
@@ -547,3 +604,5 @@ mesh = SubResource("QuadMesh_dr7qk")
 [connection signal="pressed" from="Head/Eyes/PlayerUI/PauseMenu/TabContainer/Pause/Buttons/ExitGame" to="." method="_on_exit_game_pressed"]
 [connection signal="toggled" from="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/HeadBob" to="." method="_on_head_bob_toggled"]
 [connection signal="pressed" from="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/Close" to="." method="_on_close_pressed"]
+[connection signal="item_selected" from="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/AspectDropDown" to="." method="_on_aspect_drop_down_item_selected"]
+[connection signal="value_changed" from="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]

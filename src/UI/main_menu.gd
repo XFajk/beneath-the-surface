@@ -1,9 +1,28 @@
 extends Control
 
+@onready var aspect_drop_down: OptionButton = $Options/Options/ScrollContainer/Buttons/AspectDropDown
+
 @onready var score: int = 0
 var complete_score: float = 0.0
 
+func _ready():
+	$Options/Options/ScrollContainer/Buttons/SensitivitySlider.value = global.sensitivity
+	
+	aspect_drop_down.selected = global.aspect
+	match aspect_drop_down.selected:
+		0: # 4:3
+			get_tree().root.content_scale_size = Vector2i(1152, 864)
+			get_window().size = Vector2i(1152, 864)
+		1: # 16:9
+			get_tree().root.content_scale_size = Vector2i(1152, 648)
+			get_window().size = Vector2i(1152, 648)
+		2: # 16:10
+			get_tree().root.content_scale_size = Vector2i(1152, 720)
+			get_window().size = Vector2i(1152, 720)
+
 func _process(delta):
+	
+	$Options/Options/ScrollContainer/Buttons/SensitivitySlider/Value.text = "%s" % global.sensitivity
 	
 	if global.won:
 		complete_score = lerp(complete_score, global.score as float, delta*5)
@@ -61,3 +80,21 @@ func _on_fail_close_pressed():
 	$MainMenu.set_visible(true)
 	$FailMenu.set_visible(false)
 	global.lost = false
+
+
+func _on_sensitivity_slider_value_changed(value):
+	global.sensitivity = value
+
+
+func _on_aspect_drop_down_item_selected(index):
+	global.aspect = index
+	match index:
+		0: # 4:3
+			get_tree().root.content_scale_size = Vector2i(1152, 864)
+			get_window().size = Vector2i(1152, 864)
+		1: # 16:9
+			get_tree().root.content_scale_size = Vector2i(1152, 648)
+			get_window().size = Vector2i(1152, 648)
+		2: # 16:10
+			get_tree().root.content_scale_size = Vector2i(1152, 720)
+			get_window().size = Vector2i(1152, 720)

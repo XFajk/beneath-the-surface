@@ -30,7 +30,7 @@ var number_of_items: int = 0
 
 @export_category("Mouse")
 @export var captured_mouse: bool = true
-@export var mouse_sensitivity: float = 0.05
+@onready var mouse_sensitivity: float = global.sensitivity
 
 @export_category("Movement")
 @export var walk_speed: float = 2
@@ -105,7 +105,9 @@ var run_sounds: Array = [
 func _ready() -> void:
 	randomize()
 	
+	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/SensitivitySlider/Value.text = "%s" % mouse_sensitivity
 	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/HeadBob.button_pressed = global.head_bob_on
+	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/AspectDropDown.selected = global.aspect
 	
 	# capture the mouse
 	if captured_mouse:
@@ -377,4 +379,21 @@ func _on_close_pressed():
 func _on_head_bob_toggled(toggled_on):
 	head_bob_on = toggled_on
 
+func _on_aspect_drop_down_item_selected(index):
+	global.aspect = index
+	match index:
+		0: # 4:3
+			get_tree().root.content_scale_size = Vector2i(1152, 864)
+			get_window().size = Vector2i(1152, 864)
+		1: # 16:9
+			get_tree().root.content_scale_size = Vector2i(1152, 648)
+			get_window().size = Vector2i(1152, 648)
+		2: # 16:10
+			get_tree().root.content_scale_size = Vector2i(1152, 720)
+			get_window().size = Vector2i(1152, 720)
 
+
+func _on_sensitivity_slider_value_changed(value):
+	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/SensitivitySlider/Value.text = "%s" % value
+	mouse_sensitivity = value
+	global.sensitivity = value
