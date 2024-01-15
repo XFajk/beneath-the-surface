@@ -1,8 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://itt32aeoiqgd"]
+[gd_scene load_steps=28 format=3 uid="uid://itt32aeoiqgd"]
 
 [ext_resource type="Script" path="res://src/level/level.gd" id="1_1qqdo"]
 [ext_resource type="PackedScene" uid="uid://o33d3gs7y8xp" path="res://assets/entities/House_0.tscn" id="1_hg2ds"]
-[ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/sofa.tscn" id="2_v5mqd"]
+[ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/Sofa.tscn" id="2_v5mqd"]
 [ext_resource type="PackedScene" uid="uid://bhee1m87cr60r" path="res://assets/furniture/coffe_table.tscn" id="3_psrcu"]
 [ext_resource type="PackedScene" uid="uid://dhrh4fi20xl6o" path="res://assets/furniture/kitchen_shelf.tscn" id="4_lv07o"]
 [ext_resource type="PackedScene" uid="uid://bv6hgliu857hb" path="res://assets/furniture/dining_table.tscn" id="5_q3usu"]
@@ -24,6 +24,9 @@
 [ext_resource type="PackedScene" uid="uid://vjhir02otwo5" path="res://assets/furniture/Toilet.tscn" id="22_e1vgr"]
 [ext_resource type="PackedScene" uid="uid://cennj0hm1y4ht" path="res://assets/furniture/Toilet_Paper.tscn" id="24_q5ep1"]
 [ext_resource type="PackedScene" uid="uid://crbsr60t6r1m7" path="res://assets/entities/Player.tscn" id="24_u8sk2"]
+[ext_resource type="PackedScene" uid="uid://bexnoyiru3oer" path="res://assets/furniture/Shower.tscn" id="25_xigp1"]
+[ext_resource type="PackedScene" uid="uid://bg2fam5m8xe" path="res://assets/furniture/Sink.tscn" id="26_85je4"]
+[ext_resource type="PackedScene" uid="uid://c5q483nk21do3" path="res://assets/furniture/Basket.tscn" id="27_1teg8"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
@@ -157,6 +160,12 @@ transform = Transform3D(-3.30021e-07, 0, 1.785, 0, 1.31, 0, -1.51, 0, -3.90124e-
 [node name="toilet" parent="Static_Furniture" instance=ExtResource("22_e1vgr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.24505, 1.19209e-07, 1.14316)
 
+[node name="shower" parent="Static_Furniture" instance=ExtResource("25_xigp1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85352, 0.0102067, -3.10069)
+
+[node name="sink" parent="Static_Furniture" instance=ExtResource("26_85je4")]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, -4.96506, 1.05581, -0.872246)
+
 [node name="Spawn_Positions" type="Node3D" parent="."]
 
 [node name="Small" type="Node3D" parent="Spawn_Positions"]
@@ -177,7 +186,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81806, 2.20575, -9.58656)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81806, 2.20575, -7.00392)
 
 [node name="Small_Pos6" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50379, 1.16482, -10.1895)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50379, 1.16482, -10.4913)
 
 [node name="Small_Pos7" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.47045, 0.629937, -7.86341)
@@ -195,7 +204,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51525, 1.11855, -15.795)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44755, 0.631812, -15.002)
 
 [node name="Small_Pos12" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80882, 0.0821687, -15.141)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39616, 1.144, -4.80999)
 
 [node name="Small_Pos13" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80588, 0.532602, -9.37637)
@@ -233,34 +242,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43827, 0.805338, 4.64752)
 [node name="Small_Pos24" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8695, 1.28648, -2.9988)
 
+[node name="Small_Pos25" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.38018, 0.701535, -4.71575)
+
+[node name="Small_Pos26" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.65244, 0.701535, 0.561599)
+
+[node name="Small_Pos27" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68805, 0.701535, -0.556924)
+
+[node name="Small_Pos28" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3636, 0.701535, 6.30408)
+
+[node name="Small_Pos29" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.90022, 1.24491, -1.14877)
+
+[node name="Small_Pos30" type="Node3D" parent="Spawn_Positions/Small" groups=["Small_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08555, 1.28599, 1.7268)
+
 [node name="Medium" type="Node3D" parent="Spawn_Positions"]
 
 [node name="Medium_Pos" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.45746, 0.103818, -9.43039)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62369, 0.103818, -9.43039)
 
 [node name="Medium_Pos2" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14569, 0.0847804, -16.1073)
 
 [node name="Medium_Pos3" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1437, 0.0847804, -7.37283)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.336, 1.13292, -9.42957)
 
 [node name="Medium_Pos4" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.86907, 0.349862, 0.663117)
 
 [node name="Medium_Pos5" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8111, 0.0430255, 8.13424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41626, 1.37394, 6.47389)
 
 [node name="Medium_Pos6" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.43298, 0.086051, -8.23969)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.63064, 1.36221, -4.49234)
 
 [node name="Medium_Pos7" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38415, 0.0430255, -12.1926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39952, 1.0404, -8.48602)
 
 [node name="Medium_Pos8" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.31474, 0.086051, -17.5411)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52969, 1.34065, 0.931302)
 
 [node name="Medium_Pos10" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20714, 0.0430255, -1.15179)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42838, 0.709524, -15.9117)
 
 [node name="Medium_Pos11" type="Node3D" parent="Spawn_Positions/Medium" groups=["Medium_Pos"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88246, 1.1084, -16.1374)
@@ -271,7 +298,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88246, 1.1084, -16.1374)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26833, 0.0378534, -4.76928)
 
 [node name="Large_Pos2" type="Node3D" parent="Spawn_Positions/Large" groups=["Large_Pos"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53666, 0.0757067, 6.90399)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8567, 0.0757067, 3.03208)
+
+[node name="Large_Pos3" type="Node3D" parent="Spawn_Positions/Large" groups=["Large_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74819, 0.330667, -3.00823)
+
+[node name="Large_Pos4" type="Node3D" parent="Spawn_Positions/Large" groups=["Large_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52127, 0.0378534, 0.612822)
+
+[node name="Large_Pos5" type="Node3D" parent="Spawn_Positions/Large" groups=["Large_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.26871, 0.0378534, -17.7317)
+
+[node name="Large_Pos6" type="Node3D" parent="Spawn_Positions/Large" groups=["Large_Pos"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.35818, 0.0378534, -18.1543)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_ecjlw")
@@ -348,5 +387,10 @@ omni_range = 6.93216
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.67148, 2.63166, 3.95377)
 shadow_enabled = true
 omni_range = 6.93216
+
+[node name="basket" parent="." instance=ExtResource("27_1teg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42411, 0.098455, -1.00753)
+tutorial_lable_pos = Vector3(0, 0.4, 0)
+enable_tutorial_lable = true
 
 [connection signal="timeout" from="AudioStreamPlayer/Music_Timer" to="." method="_on_music_timer_timeout"]

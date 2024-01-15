@@ -1,8 +1,8 @@
 extends Node3D
 
-@export var small_item_count: int = 5
+@export var small_item_count: int = 7
 @export var medium_item_count: int = 5
-@export var large_item_count: int = 2
+@export var large_item_count: int = 4
 
 var small_positions: Array
 var medium_positions: Array
@@ -13,7 +13,7 @@ var small_items: Array = [preload("res://assets/Phone.tscn"), preload("res://ass
 
 var medium_items: Array = [preload("res://assets/Laptop.tscn"), preload("res://assets/Console.tscn")]
 
-var large_items: Array = [preload("res://assets/Vase.tscn"), preload("res://assets/Console.tscn")]
+var large_items: Array = [preload("res://assets/Vase.tscn")]
 
 @onready var music: AudioStreamPlayer = $AudioStreamPlayer
 @onready var music_timer: Timer = $AudioStreamPlayer/Music_Timer
@@ -67,7 +67,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if music.volume_db < -2:
+	if music.volume_db < -10:
 		music.volume_db += 32 * delta
 
 func _on_music_timer_timeout():

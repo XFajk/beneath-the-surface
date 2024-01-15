@@ -19,6 +19,10 @@ var locked: bool = false
 var lockpicking_speed: float = 0.0
 var lockpicking_decrement_speed: float = 15.0
 
+@onready var sound_player: AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+var open_sound = preload("res://assets/sounds/door_open_0.wav")
+var close_sound = preload("res://assets/sounds/door_close_0.wav")
+
 func _ready():
 	randomize()
 	
@@ -29,6 +33,8 @@ func _ready():
 	desired_angle = start_door_angle
 	rotation_degrees.y = start_door_angle
 	
+	add_child(sound_player)
+	sound_player.volume_db = -17
 
 func _process(_delta):
 	if interacter != null:
@@ -51,9 +57,13 @@ func start_interaction(new_interacter: Object) -> bool:
 	if Input.is_action_just_pressed("pick_up") and not locked:
 
 		if not opened:
+			sound_player.stream = open_sound
+			sound_player.play()
 			desired_angle = open_door_angle
 			opened = true
 		else:
+			sound_player.stream = close_sound
+			sound_player.play(1.3)
 			desired_angle = start_door_angle
 			opened = false
 

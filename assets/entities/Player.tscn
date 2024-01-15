@@ -97,10 +97,10 @@ size = Vector2(0.2, 0.2)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_7dypm")
-mouse_sensitivity = 0.08
+mouse_sensitivity = 0.18
 acceleration = 7.0
 stamina_delition = 20.0
-stamina_regeneration = 10.0
+stamina_regeneration = 15.0
 stamina_bar_blink_speed = 10.0
 stamina_bar_color_lerp_speed = 10.0
 player_stand_heigh = 2.1
