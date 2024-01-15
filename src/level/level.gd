@@ -22,6 +22,11 @@ var large_items: Array = [preload("res://assets/Vase.tscn")]
 func _ready():
 	randomize()
 	
+	print(large_items)
+	print(medium_items)
+	print(small_items)
+	print(music.stream)
+	
 	music.volume_db = -80
 	
 	var tree = get_tree()
