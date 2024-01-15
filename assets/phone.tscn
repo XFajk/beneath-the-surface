@@ -42,6 +42,7 @@ size = Vector3(0.2, 0.01, 0.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010081, 0)
 collision_mask = 3
 script = ExtResource("1_7au41")
+score = 3000
 enable_tutorial_label = true
 
 [node name="Cube" type="MeshInstance3D" parent="."]

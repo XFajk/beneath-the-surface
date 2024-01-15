@@ -42,6 +42,7 @@ shadow_mesh = SubResource("ArrayMesh_w4m4s")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0399388, 0)
 collision_mask = 3
 script = ExtResource("1_skp6q")
+score = 3000
 enable_tutorial_label = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

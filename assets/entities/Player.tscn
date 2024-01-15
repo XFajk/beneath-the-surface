@@ -97,6 +97,7 @@ size = Vector2(0.2, 0.2)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_7dypm")
+inventory_size = 5
 mouse_sensitivity = 0.18
 acceleration = 7.0
 stamina_delition = 20.0
@@ -313,25 +314,26 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Exit Game"
 
-[node name="MoneyLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 46.0
-offset_right = 214.0
-offset_bottom = 88.0
-text = "MONEY: 1000"
-label_settings = SubResource("LabelSettings_2kudt")
-script = ExtResource("5_7d3dc")
-
 [node name="ScoreLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
 layout_mode = 0
 offset_left = 19.0
-offset_top = 94.0
-offset_right = 214.0
-offset_bottom = 136.0
+offset_top = 46.0
+offset_right = 250.0
+offset_bottom = 88.0
 text = "SCORE: 1234560"
 label_settings = SubResource("LabelSettings_2kudt")
 script = ExtResource("6_55kp7")
+
+[node name="MoneyLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 90.0
+offset_right = 214.0
+offset_bottom = 132.0
+text = "MONEY: 1000"
+label_settings = SubResource("LabelSettings_2kudt")
+script = ExtResource("5_7d3dc")
 
 [node name="OptionsMenu" type="Control" parent="Head/Eyes/PlayerUI"]
 visible = false

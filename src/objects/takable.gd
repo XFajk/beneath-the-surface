@@ -18,7 +18,7 @@ func start_interaction(new_interacter: Object) -> bool:
 			var copy_particles: GPUParticles3D = take_particles.instantiate()
 			new_interacter.add_child(copy_particles)
 			copy_particles.global_position = global_position
-			global.score += score
+			new_interacter.score += score
 			new_interacter.number_of_items += 1
 			queue_free()
 		else:

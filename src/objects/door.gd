@@ -2,6 +2,8 @@ extends StaticBody3D
 
 var interacter: Object = null
 
+@export var play_sound: bool = true 
+
 @export_category("Totorial lable")
 @export var tutorial_lable_pos: Vector3 = Vector3(0, 0.2, 0)
 @export var enable_tutorial_lable: bool = false
@@ -57,13 +59,15 @@ func start_interaction(new_interacter: Object) -> bool:
 	if Input.is_action_just_pressed("pick_up") and not locked:
 
 		if not opened:
-			sound_player.stream = open_sound
-			sound_player.play()
+			if play_sound:
+				sound_player.stream = open_sound
+				sound_player.play()
 			desired_angle = open_door_angle
 			opened = true
 		else:
-			sound_player.stream = close_sound
-			sound_player.play(1.3)
+			if play_sound:
+				sound_player.stream = close_sound
+				sound_player.play(1.3)
 			desired_angle = start_door_angle
 			opened = false
 

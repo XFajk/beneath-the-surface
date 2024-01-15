@@ -88,7 +88,22 @@ var cursor_shake_timer: float = 0.0
 var in_interaction: bool = false
 var interactible: Object = null
 
+var score: int = 0
+
+@onready var sound_player: AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+var walk_sounds: Array = [
+	preload("res://assets/sounds/walk_0.wav"),
+	preload("res://assets/sounds/walk_1.wav"),
+	preload("res://assets/sounds/walk_2.wav"),
+]
+var run_sounds: Array = [
+	preload("res://assets/sounds/run_0.wav"),
+	preload("res://assets/sounds/run_1.wav"),
+	preload("res://assets/sounds/run_2.wav"),
+]
+
 func _ready() -> void:
+	randomize()
 	
 	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/HeadBob.button_pressed = global.head_bob_on
 	
@@ -101,6 +116,9 @@ func _ready() -> void:
 	head.position.y = head_stand_height
 	original_head_y = head_stand_height
 	crouch_check.position.y = player_stand_heigh/2
+	
+	add_child(sound_player)
+	sound_player.volume_db = -17
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion and captured_mouse:
@@ -132,7 +150,6 @@ func _input(event) -> void:
 			$Head/Eyes/PlayerUI/OptionsMenu.set_visible(false)
 			stamina_bar.set_visible(true)
 			cross_hair.set_visible(true)
-			
 
 func _process(delta):
 	tutorial_camera.global_transform = main_camera.global_transform
@@ -147,7 +164,11 @@ func _process(delta):
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		apply_interactions()
 	$Head/Eyes/PlayerUI/InventoryInfo.text = "ITEMS: %s/%s" % [inventory_size, number_of_items]
-		
+	
+	if global.won or global.lost:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		get_tree().change_scene_to_file("res://assets/levels/MainMenu.tscn")
+	
 
 func _physics_process(delta: float) -> void:
 	
@@ -169,7 +190,6 @@ func _physics_process(delta: float) -> void:
 		final_direction = final_direction.lerp(direction, acceleration*delta)
 		velocity = final_direction
 		move_and_slide()
-		
 
 func apply_crouch(delta: float) -> void:
 	
@@ -258,14 +278,25 @@ func apply_speed(direction: Vector3, delta: float = 1.0) -> Vector3:
 		if Input.is_action_pressed("crouch") or is_crouching:
 			current_speed = crouch_speed
 			head_bob_speed = head_bob_crouch_speed
+			if not sound_player.playing or not walk_sounds.has(sound_player.stream):
+				sound_player.stream = walk_sounds.pick_random()
+				sound_player.play()
+			
 		elif Input.is_action_pressed("sprint") and stamina_bar.value > 1 and not reached_soft_limit:
 			current_speed = runnig_speed
 			head_bob_speed = head_bob_running_speed
 			stamina_bar.value -= (stamina_delition+stamina_regeneration)*delta
+			if not sound_player.playing or not run_sounds.has(sound_player.stream):
+				sound_player.stream = run_sounds.pick_random()
+				sound_player.play()
 		else:
 			current_speed = walk_speed
 			head_bob_speed = head_bob_walk_speed
+			if not sound_player.playing or not walk_sounds.has(sound_player.stream):
+				sound_player.stream = walk_sounds.pick_random()
+				sound_player.play()
 	else:
+		sound_player.stop()
 		current_speed = 0.0
 		head_bob_speed = 0.0
 		
@@ -345,3 +376,5 @@ func _on_close_pressed():
 
 func _on_head_bob_toggled(toggled_on):
 	head_bob_on = toggled_on
+
+

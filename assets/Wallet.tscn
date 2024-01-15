@@ -162,6 +162,7 @@ shadow_mesh = SubResource("ArrayMesh_f227p")
 [node name="wallet" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0168017, 0)
 script = ExtResource("1_4c2l8")
+score = 1500
 enable_tutorial_label = true
 
 [node name="Plane" type="MeshInstance3D" parent="."]

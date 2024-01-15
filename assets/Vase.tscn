@@ -48,6 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00569987, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jcbuc")
+score = 1000
 tutorial_lable_pos = Vector3(0, 0.6, 0)
 enable_tutorial_lable = true
 

@@ -48,6 +48,7 @@ data = PackedVector3Array(0.2, 0.05, -0.1, -0.2, 0.05, 0.1, -0.2, 0.05, -0.1, 0.
 [node name="money_pile" type="StaticBody3D"]
 transform = Transform3D(0.565, 0, 0, 0, 0.565, 0, 0, 0, 0.565, 0, 0.345069, 0)
 script = ExtResource("1_yjw1x")
+score = 2000
 enable_tutorial_label = true
 
 [node name="Cube" type="MeshInstance3D" parent="."]

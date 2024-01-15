@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/level/level.gd" id="1_1qqdo"]
 [ext_resource type="PackedScene" uid="uid://o33d3gs7y8xp" path="res://assets/entities/House_0.tscn" id="1_hg2ds"]
-[ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/Sofa.tscn" id="2_v5mqd"]
+[ext_resource type="PackedScene" uid="uid://cjnsx2ko3gns3" path="res://assets/furniture/sofa.tscn" id="2_v5mqd"]
 [ext_resource type="PackedScene" uid="uid://bhee1m87cr60r" path="res://assets/furniture/coffe_table.tscn" id="3_psrcu"]
 [ext_resource type="PackedScene" uid="uid://dhrh4fi20xl6o" path="res://assets/furniture/kitchen_shelf.tscn" id="4_lv07o"]
 [ext_resource type="PackedScene" uid="uid://bv6hgliu857hb" path="res://assets/furniture/dining_table.tscn" id="5_q3usu"]
