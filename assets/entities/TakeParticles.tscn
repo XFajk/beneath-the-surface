@@ -32,7 +32,6 @@ rings = 8
 
 [node name="Particles" type="GPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-layers = 2
 material_override = SubResource("StandardMaterial3D_joxif")
 cast_shadow = 0
 amount = 30

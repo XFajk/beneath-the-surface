@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://nf2nvpmvrvxq"]
+[gd_scene load_steps=13 format=3 uid="uid://nf2nvpmvrvxq"]
 
 [ext_resource type="Environment" uid="uid://kttecvt1ttwi" path="res://assets/entities/GameEnv.res" id="1_18v6k"]
 [ext_resource type="Script" path="res://src/UI/main_menu.gd" id="1_t37qf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b57yoiv4y7jp6" path="res://assets/sprites/success_text.png" id="3_exhi8"]
 [ext_resource type="Texture2D" uid="uid://bc2turm7kwckt" path="res://assets/sprites/prison_bars.png" id="4_1gv6i"]
 [ext_resource type="Texture2D" uid="uid://7jtyym2eypbw" path="res://assets/sprites/failed_text.png" id="5_6i07u"]
+[ext_resource type="Shader" path="res://src/shaders/pixelator.gdshader" id="7_o88m3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nkduv"]
 font_size = 30
@@ -19,6 +20,14 @@ shadow_offset = Vector2(-1, 1)
 font_size = 30
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0vybl"]
+render_priority = 0
+shader = ExtResource("7_o88m3")
+shader_parameter/pixel_size = 4
+
+[sub_resource type="QuadMesh" id="QuadMesh_jigwb"]
+material = SubResource("ShaderMaterial_0vybl")
 
 [node name="MainMenu" type="Node3D"]
 
@@ -93,6 +102,7 @@ size_flags_vertical = 4
 text = "Close"
 
 [node name="AspectDropDown" type="OptionButton" parent="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = 80.0
 offset_right = 161.0
@@ -359,6 +369,10 @@ offset_bottom = 57.0
 grow_horizontal = 2
 text = "Underground Operations"
 label_settings = SubResource("LabelSettings_8lit7")
+
+[node name="Pixelator" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, -2.98023e-08, 1.19209e-07, -1.49012e-08, 1, -1.49012e-08, -5.96046e-08, 2.23517e-08, 1, 0, 0, -0.1)
+mesh = SubResource("QuadMesh_jigwb")
 
 [node name="Node3D" parent="." instance=ExtResource("3_cqexw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -1.15, 0)

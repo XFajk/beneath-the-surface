@@ -23,6 +23,10 @@ global="*res://global.gd"
 
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/test/plugin.cfg")
+
 [file_customization]
 
 folder_colors={

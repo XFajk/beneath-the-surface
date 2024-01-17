@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://crbsr60t6r1m7"]
+[gd_scene load_steps=35 format=3 uid="uid://crbsr60t6r1m7"]
 
 [ext_resource type="Script" path="res://src/entities/player.gd" id="1_7dypm"]
 [ext_resource type="Environment" uid="uid://kttecvt1ttwi" path="res://assets/entities/GameEnv.res" id="2_vc100"]
@@ -10,6 +10,7 @@
 [ext_resource type="LabelSettings" uid="uid://dm7x4ep8081ml" path="res://assets/entities/InventoryLable.res" id="5_vxbpb"]
 [ext_resource type="Script" path="res://src/UI/score_label.gd" id="6_55kp7"]
 [ext_resource type="Texture2D" uid="uid://cway3ky1o72l4" path="res://assets/sprites/Lock.png" id="7_3e0sb"]
+[ext_resource type="Shader" path="res://src/shaders/pixelator.gdshader" id="8_howxo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bc8x3"]
 radius = 0.3
@@ -44,6 +45,14 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 30
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbuc5"]
+render_priority = 0
+shader = ExtResource("8_howxo")
+shader_parameter/pixel_size = 4
+
+[sub_resource type="QuadMesh" id="QuadMesh_crtys"]
+material = SubResource("ShaderMaterial_kbuc5")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ka62s"]
 radius = 0.3
@@ -405,6 +414,7 @@ grow_vertical = 0
 text = "Close"
 
 [node name="AspectDropDown" type="OptionButton" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = 80.0
 offset_right = 161.0
@@ -431,6 +441,7 @@ grow_vertical = 2
 text = "Aspect"
 
 [node name="SensitivitySlider" type="HSlider" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
+layout_mode = 0
 offset_left = 47.0
 offset_top = 140.0
 offset_right = 160.0
@@ -515,6 +526,11 @@ grow_horizontal = 2
 text = "00"
 label_settings = SubResource("LabelSettings_euq3r")
 horizontal_alignment = 2
+
+[node name="Pixelator" type="MeshInstance3D" parent="Head/Eyes"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, -0.1)
+mesh = SubResource("QuadMesh_crtys")
+skeleton = NodePath("../../..")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
