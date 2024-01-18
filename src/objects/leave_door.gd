@@ -2,8 +2,6 @@ extends StaticBody3D
 
 @export var tutorial_lable_pos: Vector3 = Vector3(0, 0.2, 0)
 
-var take_particles: PackedScene = preload("res://assets/entities/TakeParticles.tscn")
-
 var interacter: Object = null
 
 func _process(_delta):
@@ -26,11 +24,11 @@ func start_interaction(new_interacter: Object) -> bool:
 func interact() -> void:
 	if Input.is_action_just_released("take"):
 		if interacter.number_of_items > 0:
-			var copy_particles: GPUParticles3D = take_particles.instantiate()
+			var copy_particles: GPUParticles3D = interacter.take_particles.instantiate()
 			interacter.add_child(copy_particles)
 			copy_particles.global_position = global_position+transform.basis*tutorial_lable_pos+Vector3(0, 0.21, 0)
 			interacter.number_of_items = 0
-			global.score += interacter.score
+			interacter.player_state.score += interacter.score
 			interacter.score = 0
 		end_interaction()
 	
@@ -40,8 +38,8 @@ func interact() -> void:
 			return
 			
 		if interacter.hold_interaction_bar.value > 99.9:
-			global.won = true
-			global.score += interacter.score
+			interacter.player_state.won = true
+			interacter.player_state.score += interacter.score
 			interacter.hold_interaction_bar.value = 0.0
 	
 		interacter.hold_interaction_bar.value += get_process_delta_time()*50.0

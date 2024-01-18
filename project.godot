@@ -15,17 +15,15 @@ run/main_scene="res://assets/levels/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-global="*res://global.gd"
-
 [display]
 
+window/size/viewport_width=1024
+window/size/viewport_height=576
 window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/test/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 
@@ -35,6 +33,7 @@ folder_colors={
 "res://assets/furniture/": "red",
 "res://assets/levels/": "blue",
 "res://assets/models_and_materials/": "yellow",
+"res://assets/resources/": "orange",
 "res://assets/textures/": "purple",
 "res://src/": "red"
 }

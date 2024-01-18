@@ -8,6 +8,9 @@ extends CharacterBody3D
 	LOCK_ICON = $KeyBillboards/LockIcon
 }
 
+@export var settings: SettingRes
+var player_state: PlayerStateRes = preload("res://assets/resources/player_state.res")
+
 @onready var head: Node3D = $Head
 @onready var hand: Node3D = $Head/Eyes/Hand
 
@@ -20,17 +23,17 @@ extends CharacterBody3D
 
 @onready var interaction_ray: RayCast3D = $Head/Eyes/InteractionRay
 @onready var cross_hair: Sprite2D = $Head/Eyes/PlayerUI/Crosshair/CrosshairSprite
+var take_particles: PackedScene = preload("res://assets/effects/TakeParticles.tscn")
 
 @onready var body_collision: CollisionShape3D = $Body
 @onready var body_mesh: MeshInstance3D = $BodyMesh
 @onready var crouch_check: RayCast3D = $CrouchCheckRay
 
-@export_range(3, 7, 1) var inventory_size: int = 3
 var number_of_items: int = 0
 
 @export_category("Mouse")
 @export var captured_mouse: bool = true
-@onready var mouse_sensitivity: float = global.sensitivity
+@onready var mouse_sensitivity: float = settings.sensitivity
 
 @export_category("Movement")
 @export var walk_speed: float = 2
@@ -69,7 +72,7 @@ var is_crouching: bool = false
 @export var head_crouch_height: float = -0.5
 
 @export_category("Headbob")
-@onready var head_bob_on: bool = global.head_bob_on
+@onready var head_bob_on: bool = settings.head_bob_on
 var head_bob_timmer: float = 0.0
 @export var head_bob_walk_speed: float = 10.0
 @export var head_bob_running_speed: float = 15.0
@@ -77,9 +80,6 @@ var head_bob_timmer: float = 0.0
 var head_bob_speed: float = 0.0
 @export var head_bob_ammount: float = 10.0 # 1=big bob, 1000 small bob
 var original_head_y: float = head_stand_height
-
-@export_category("Lockpicking")
-@export_range(1, 4, 1) var lockpick_level: int = 1
 
 var active_cursor_shake: float = 0.0
 var cursor_shake_timer: float = 0.0
@@ -106,8 +106,8 @@ func _ready() -> void:
 	randomize()
 	
 	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/SensitivitySlider/Value.text = "%s" % mouse_sensitivity
-	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/HeadBob.button_pressed = global.head_bob_on
-	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/AspectDropDown.selected = global.aspect
+	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/SensitivitySlider.value = settings.sensitivity
+	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/HeadBob.button_pressed = head_bob_on
 	
 	# capture the mouse
 	if captured_mouse:
@@ -165,9 +165,9 @@ func _process(delta):
 	
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		apply_interactions()
-	$Head/Eyes/PlayerUI/InventoryInfo.text = "ITEMS: %s/%s" % [inventory_size, number_of_items]
+	$Head/Eyes/PlayerUI/InventoryInfo.text = "ITEMS: %s/%s" % [player_state.inventory_size, number_of_items]
 	
-	if global.won or global.lost:
+	if player_state.won or player_state.lost:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().change_scene_to_file("res://assets/levels/MainMenu.tscn")
 	
@@ -379,21 +379,8 @@ func _on_close_pressed():
 func _on_head_bob_toggled(toggled_on):
 	head_bob_on = toggled_on
 
-func _on_aspect_drop_down_item_selected(index):
-	global.aspect = index
-	match index:
-		0: # 4:3
-			get_tree().root.content_scale_size = Vector2i(1152, 864)
-			get_window().size = Vector2i(1152, 864)
-		1: # 16:9
-			get_tree().root.content_scale_size = Vector2i(1152, 648)
-			get_window().size = Vector2i(1152, 648)
-		2: # 16:10
-			get_tree().root.content_scale_size = Vector2i(1152, 720)
-			get_window().size = Vector2i(1152, 720)
-
 
 func _on_sensitivity_slider_value_changed(value):
 	$Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons/SensitivitySlider/Value.text = "%s" % value
 	mouse_sensitivity = value
-	global.sensitivity = value
+	settings.sensitivity = value

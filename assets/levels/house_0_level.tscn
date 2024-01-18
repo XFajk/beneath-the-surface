@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://itt32aeoiqgd"]
+[gd_scene load_steps=29 format=3 uid="uid://itt32aeoiqgd"]
 
 [ext_resource type="Script" path="res://src/level/level.gd" id="1_1qqdo"]
 [ext_resource type="PackedScene" uid="uid://o33d3gs7y8xp" path="res://assets/entities/House_0.tscn" id="1_hg2ds"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bexnoyiru3oer" path="res://assets/furniture/Shower.tscn" id="25_xigp1"]
 [ext_resource type="PackedScene" uid="uid://bg2fam5m8xe" path="res://assets/furniture/Sink.tscn" id="26_85je4"]
 [ext_resource type="PackedScene" uid="uid://c5q483nk21do3" path="res://assets/furniture/Basket.tscn" id="27_1teg8"]
+[ext_resource type="Environment" uid="uid://kttecvt1ttwi" path="res://assets/entities/GameEnv.res" id="28_gydk1"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
@@ -107,10 +108,10 @@ transform = Transform3D(-0.999253, 0, 0.0386668, 0, 1, 0, -0.0386668, 0, -0.9992
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77888, 0.735852, -16.0617)
 
 [node name="kitchen_shelf2" parent="Static_Furniture" instance=ExtResource("4_lv07o")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.80044, 2.53268, -8.31847)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.80044, 2.43833, -8.31847)
 
 [node name="kitchen_shelf" parent="Static_Furniture" instance=ExtResource("4_lv07o")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.80044, 2.53268, -11.8004)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.80044, 2.4389, -11.8004)
 
 [node name="coffe_table" parent="Static_Furniture" instance=ExtResource("3_psrcu")]
 transform = Transform3D(1, 0, 0, 0, 1.155, 0, 0, 0, 1, -5.95901, 0.896924, -15.0159)
@@ -392,5 +393,8 @@ omni_range = 6.93216
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42411, 0.098455, -1.00753)
 tutorial_lable_pos = Vector3(0, 0.4, 0)
 enable_tutorial_lable = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("28_gydk1")
 
 [connection signal="timeout" from="AudioStreamPlayer/Music_Timer" to="." method="_on_music_timer_timeout"]

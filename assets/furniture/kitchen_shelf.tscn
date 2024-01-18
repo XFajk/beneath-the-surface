@@ -198,6 +198,7 @@ enable_tutorial_lable = true
 [node name="door" type="MeshInstance3D" parent="Empty"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.414178, -0.00961542, 0.00378722)
 material_override = ExtResource("3_u5pcd")
+transparency = 0.2
 mesh = SubResource("ArrayMesh_5kmmo")
 skeleton = NodePath("")
 
@@ -215,6 +216,7 @@ open_door_angle = -90.0
 [node name="door_001" type="MeshInstance3D" parent="Empty_001"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.413523, -0.00961542, 0.00378722)
 material_override = ExtResource("3_u5pcd")
+transparency = 0.2
 mesh = SubResource("ArrayMesh_jrb1h")
 skeleton = NodePath("")
 
@@ -231,6 +233,7 @@ enable_tutorial_lable = true
 [node name="door_002" type="MeshInstance3D" parent="Empty_002"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412862, -0.00961542, 0.00378722)
 material_override = ExtResource("3_u5pcd")
+transparency = 0.2
 mesh = SubResource("ArrayMesh_l0d5a")
 skeleton = NodePath("")
 

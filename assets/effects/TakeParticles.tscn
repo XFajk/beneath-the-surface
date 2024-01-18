@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxxuv0fkurfmb"]
 
-[ext_resource type="Script" path="res://src/entities/take_particles.gd" id="1_tvf2h"]
+[ext_resource type="Script" path="res://src/entities/take_particles.gd" id="1_3gq5s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_joxif"]
 shading_mode = 0
 grow_amount = 0.47
 
 [sub_resource type="Curve" id="Curve_ot1qt"]
-_data = [Vector2(0, 1), 0.0, -2.97423, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -2.97423, 0, 0, Vector2(0.310651, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_r7e7k"]
@@ -37,6 +37,6 @@ cast_shadow = 0
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_oa60i")
 draw_pass_1 = SubResource("SphereMesh_jlou0")
-script = ExtResource("1_tvf2h")
+script = ExtResource("1_3gq5s")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

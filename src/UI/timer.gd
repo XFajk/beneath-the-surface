@@ -1,5 +1,7 @@
 extends Control
 
+var player_state: PlayerStateRes = preload("res://assets/resources/player_state.res")
+
 var mseconds: int = 0
 var seconds: int = 0
 var minutes: int = 0
@@ -19,4 +21,4 @@ func _process(delta):
 	$Timer3.text = "%02d." %minutes
 	
 	if time < 0.001:
-		global.lost = true
+		player_state.lost = true

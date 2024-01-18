@@ -78,7 +78,7 @@ func start_interaction(new_interacter: Object) -> bool:
 	if Input.is_action_just_pressed("take") and locked:
 		interacter = new_interacter
 		
-		match interacter.lockpick_level:
+		match interacter.player_state.lockpick_level:
 			1:
 				lockpicking_speed = 6
 			2:

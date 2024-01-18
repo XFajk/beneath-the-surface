@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://nf2nvpmvrvxq"]
+[gd_scene load_steps=14 format=3 uid="uid://nf2nvpmvrvxq"]
 
 [ext_resource type="Environment" uid="uid://kttecvt1ttwi" path="res://assets/entities/GameEnv.res" id="1_18v6k"]
 [ext_resource type="Script" path="res://src/UI/main_menu.gd" id="1_t37qf"]
-[ext_resource type="Script" path="res://assets/levels/panorama.gd" id="2_at5t5"]
+[ext_resource type="Script" path="res://src/entities/panorama.gd" id="2_at5t5"]
 [ext_resource type="PackedScene" uid="uid://fnrm7mqen0yl" path="res://assets/levels/house_without_player.tscn" id="3_cqexw"]
 [ext_resource type="Texture2D" uid="uid://b57yoiv4y7jp6" path="res://assets/sprites/success_text.png" id="3_exhi8"]
 [ext_resource type="Texture2D" uid="uid://bc2turm7kwckt" path="res://assets/sprites/prison_bars.png" id="4_1gv6i"]
+[ext_resource type="Resource" uid="uid://lahuhpmit51d" path="res://assets/resources/default_settigns.res" id="4_hrfub"]
 [ext_resource type="Texture2D" uid="uid://7jtyym2eypbw" path="res://assets/sprites/failed_text.png" id="5_6i07u"]
 [ext_resource type="Shader" path="res://src/shaders/pixelator.gdshader" id="7_o88m3"]
 
@@ -21,13 +22,13 @@ font_size = 30
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0vybl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3goc"]
 render_priority = 0
 shader = ExtResource("7_o88m3")
-shader_parameter/pixel_size = 4
+shader_parameter/pixel_size = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_jigwb"]
-material = SubResource("ShaderMaterial_0vybl")
+material = SubResource("ShaderMaterial_u3goc")
 
 [node name="MainMenu" type="Node3D"]
 
@@ -46,6 +47,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t37qf")
+settings = ExtResource("4_hrfub")
 
 [node name="Options" type="TabContainer" parent="Camera3D/MainMenu"]
 visible = false
@@ -101,39 +103,12 @@ grow_vertical = 0
 size_flags_vertical = 4
 text = "Close"
 
-[node name="AspectDropDown" type="OptionButton" parent="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 80.0
-offset_right = 161.0
-offset_bottom = 111.0
-item_count = 3
-selected = 1
-popup/item_0/text = "4:3"
-popup/item_0/id = 0
-popup/item_1/text = "16:9"
-popup/item_1/id = 1
-popup/item_2/text = "16:10"
-popup/item_2/id = 2
-
-[node name="Name" type="Label" parent="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons/AspectDropDown"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 249.0
-offset_top = -11.5
-offset_right = 353.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "Aspect"
-
 [node name="SensitivitySlider" type="HSlider" parent="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons"]
 layout_mode = 0
 offset_left = 47.0
-offset_top = 140.0
+offset_top = 78.0
 offset_right = 160.0
-offset_bottom = 156.0
+offset_bottom = 94.0
 min_value = 0.01
 max_value = 0.1
 step = 0.005
@@ -371,7 +346,8 @@ text = "Underground Operations"
 label_settings = SubResource("LabelSettings_8lit7")
 
 [node name="Pixelator" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, -2.98023e-08, 1.19209e-07, -1.49012e-08, 1, -1.49012e-08, -5.96046e-08, 2.23517e-08, 1, 0, 0, -0.1)
+transform = Transform3D(1, -4.47035e-08, 3.57628e-07, -1.49012e-08, 1, -6.70552e-08, -2.98023e-07, 3.72529e-08, 1, -1.93116, -0.00867438, 0.688222)
+cast_shadow = 0
 mesh = SubResource("QuadMesh_jigwb")
 
 [node name="Node3D" parent="." instance=ExtResource("3_cqexw")]
@@ -380,7 +356,6 @@ script = null
 
 [connection signal="toggled" from="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons/HeadBob" to="Camera3D/MainMenu" method="_on_head_bob_toggled"]
 [connection signal="pressed" from="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons/Close" to="Camera3D/MainMenu" method="_on_close_pressed"]
-[connection signal="item_selected" from="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons/AspectDropDown" to="Camera3D/MainMenu" method="_on_aspect_drop_down_item_selected"]
 [connection signal="value_changed" from="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons/SensitivitySlider" to="Camera3D/MainMenu" method="_on_sensitivity_slider_value_changed"]
 [connection signal="pressed" from="Camera3D/MainMenu/SuccessMenu/SucessClose" to="Camera3D/MainMenu" method="_on_sucess_close_pressed"]
 [connection signal="pressed" from="Camera3D/MainMenu/FailMenu/FailClose" to="Camera3D/MainMenu" method="_on_fail_close_pressed"]

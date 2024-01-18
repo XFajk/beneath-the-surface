@@ -4,8 +4,6 @@ extends Node3D
 @export var tutorial_lable_pos: Vector3 = Vector3(0, 0.2, 0)
 @export var enable_tutorial_label: bool = false
 
-var take_particles: PackedScene = preload("res://assets/entities/TakeParticles.tscn")
-
 var interacter: Object = null
 	
 func start_interaction(new_interacter: Object) -> bool:
@@ -14,8 +12,8 @@ func start_interaction(new_interacter: Object) -> bool:
 		new_interacter.key_billboards.KEY_E.set_visible(true)
 
 	if Input.is_action_just_pressed("take"):
-		if new_interacter.number_of_items < new_interacter.inventory_size:
-			var copy_particles: GPUParticles3D = take_particles.instantiate()
+		if new_interacter.number_of_items < new_interacter.player_state.inventory_size:
+			var copy_particles: GPUParticles3D = new_interacter.take_particles.instantiate()
 			new_interacter.add_child(copy_particles)
 			copy_particles.global_position = global_position
 			new_interacter.score += score
