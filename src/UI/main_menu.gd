@@ -3,8 +3,6 @@ extends Control
 @export var settings: SettingRes
 var player_state: PlayerStateRes = preload("res://assets/resources/player_state.res")
 
-@onready var aspect_drop_down: OptionButton = $Options/Options/ScrollContainer/Buttons/AspectDropDown
-
 @onready var score: int = 0
 var complete_score: float = 0.0
 

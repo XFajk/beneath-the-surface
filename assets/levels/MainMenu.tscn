@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://nf2nvpmvrvxq"]
+[gd_scene load_steps=16 format=3 uid="uid://nf2nvpmvrvxq"]
 
 [ext_resource type="Environment" uid="uid://kttecvt1ttwi" path="res://assets/entities/GameEnv.res" id="1_18v6k"]
 [ext_resource type="Script" path="res://src/UI/main_menu.gd" id="1_t37qf"]
@@ -9,6 +9,8 @@
 [ext_resource type="Resource" uid="uid://lahuhpmit51d" path="res://assets/resources/default_settigns.res" id="4_hrfub"]
 [ext_resource type="Texture2D" uid="uid://7jtyym2eypbw" path="res://assets/sprites/failed_text.png" id="5_6i07u"]
 [ext_resource type="Shader" path="res://src/shaders/pixelator.gdshader" id="7_o88m3"]
+[ext_resource type="Theme" uid="uid://tvghkcxmk8ud" path="res://assets/resources/main_ui_theme.res" id="8_isbfl"]
+[ext_resource type="FontFile" uid="uid://dowgm3oqarlgd" path="res://UI_assets/fonts/KleinHeadline-BoldOblique.ttf" id="9_uhxfi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nkduv"]
 font_size = 30
@@ -18,8 +20,10 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(-1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8lit7"]
-font_size = 30
-outline_size = 20
+font = ExtResource("9_uhxfi")
+font_size = 60
+font_color = Color(0.803922, 0.803922, 0, 1)
+outline_size = 40
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3goc"]
@@ -63,10 +67,12 @@ offset_right = 225.0
 offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_isbfl")
 tab_alignment = 1
 
-[node name="Options" type="Label" parent="Camera3D/MainMenu/Options"]
+[node name="Options" type="TabBar" parent="Camera3D/MainMenu/Options"]
 layout_mode = 2
+theme = ExtResource("8_isbfl")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Camera3D/MainMenu/Options/Options"]
 custom_minimum_size = Vector2(450, 320)
@@ -84,6 +90,7 @@ offset_left = 288.0
 offset_top = 33.0
 offset_right = 407.0
 offset_bottom = 64.0
+theme = ExtResource("8_isbfl")
 button_pressed = true
 text = "HeadBob"
 
@@ -101,14 +108,16 @@ offset_bottom = -9.69
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
+theme = ExtResource("8_isbfl")
 text = "Close"
 
 [node name="SensitivitySlider" type="HSlider" parent="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons"]
 layout_mode = 0
 offset_left = 47.0
-offset_top = 78.0
+offset_top = 103.0
 offset_right = 160.0
-offset_bottom = 94.0
+offset_bottom = 119.0
+theme = ExtResource("8_isbfl")
 min_value = 0.01
 max_value = 0.1
 step = 0.005
@@ -119,11 +128,12 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 248.0
-offset_top = -10.0
-offset_right = 323.0
-offset_bottom = 13.0
+offset_left = 252.0
+offset_top = -11.0
+offset_right = 352.0
+offset_bottom = 14.0
 grow_vertical = 2
+theme = ExtResource("8_isbfl")
 text = "Sensitivty"
 
 [node name="Value" type="Label" parent="Camera3D/MainMenu/Options/Options/ScrollContainer/Buttons/SensitivitySlider"]
@@ -131,11 +141,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -12.5
-offset_top = -25.0
-offset_right = 12.5
-offset_bottom = -2.0
+offset_left = -16.5
+offset_top = -28.0
+offset_right = 16.5
+offset_bottom = -3.0
 grow_horizontal = 2
+theme = ExtResource("8_isbfl")
 text = "0.0
 "
 
@@ -282,6 +293,7 @@ offset_right = 198.0
 offset_bottom = 207.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_isbfl")
 
 [node name="Buttons" type="Control" parent="Camera3D/MainMenu/MainMenu"]
 layout_mode = 2
@@ -299,6 +311,7 @@ offset_right = 74.0
 offset_bottom = -26.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_isbfl")
 text = "Start"
 
 [node name="Options" type="Button" parent="Camera3D/MainMenu/MainMenu/Buttons"]
@@ -314,6 +327,7 @@ offset_right = 85.0
 offset_bottom = 26.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_isbfl")
 text = "Options
 "
 
@@ -330,6 +344,7 @@ offset_right = 65.0
 offset_bottom = 77.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_isbfl")
 text = "Exit "
 
 [node name="Label" type="Label" parent="Camera3D/MainMenu/MainMenu/Buttons"]
@@ -337,10 +352,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -90.0
-offset_top = 15.0
-offset_right = 90.0
-offset_bottom = 57.0
+offset_left = -358.0
+offset_top = -35.0
+offset_right = 358.0
+offset_bottom = 39.0
 grow_horizontal = 2
 text = "Underground Operations"
 label_settings = SubResource("LabelSettings_8lit7")

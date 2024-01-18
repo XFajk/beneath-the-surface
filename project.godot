@@ -28,6 +28,7 @@ enabled=PackedStringArray()
 [file_customization]
 
 folder_colors={
+"res://UI_assets/": "purple",
 "res://assets/": "yellow",
 "res://assets/entities/": "teal",
 "res://assets/furniture/": "red",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://crbsr60t6r1m7"]
+[gd_scene load_steps=38 format=3 uid="uid://crbsr60t6r1m7"]
 
 [ext_resource type="Script" path="res://src/entities/player.gd" id="1_7dypm"]
 [ext_resource type="Resource" uid="uid://lahuhpmit51d" path="res://assets/resources/default_settigns.res" id="2_16xxd"]
@@ -11,7 +11,9 @@
 [ext_resource type="LabelSettings" uid="uid://dm7x4ep8081ml" path="res://assets/entities/InventoryLable.res" id="5_vxbpb"]
 [ext_resource type="Script" path="res://src/UI/score_label.gd" id="6_55kp7"]
 [ext_resource type="Texture2D" uid="uid://cway3ky1o72l4" path="res://assets/sprites/Lock.png" id="7_3e0sb"]
+[ext_resource type="Theme" uid="uid://tvghkcxmk8ud" path="res://assets/resources/main_ui_theme.res" id="8_1xho4"]
 [ext_resource type="Shader" path="res://src/shaders/pixelator.gdshader" id="8_howxo"]
+[ext_resource type="FontFile" uid="uid://dowgm3oqarlgd" path="res://UI_assets/fonts/KleinHeadline-BoldOblique.ttf" id="9_qyvst"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bc8x3"]
 radius = 0.2
@@ -21,28 +23,54 @@ height = 2.1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeyrw"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 0.392157)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1b12i"]
 bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glmdn"]
 bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imk2t"]
 bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n8ag"]
 bg_color = Color(0, 0, 0, 0.172549)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ald7"]
 bg_color = Color(1, 0.407843, 0.337255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_2kudt"]
+font = ExtResource("9_qyvst")
 font_size = 30
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_euq3r"]
+font = ExtResource("9_qyvst")
 font_size = 30
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
@@ -235,17 +263,18 @@ show_percentage = false
 [node name="InventoryInfo" type="Label" parent="Head/Eyes/PlayerUI"]
 layout_mode = 0
 offset_left = 20.0
-offset_right = 74.0
-offset_bottom = 49.0
+offset_top = 8.0
+offset_right = 172.0
+offset_bottom = 57.0
 text = "ITEMS: 0/0"
 label_settings = ExtResource("5_vxbpb")
 
 [node name="ScoreLabel" type="Label" parent="Head/Eyes/PlayerUI"]
 layout_mode = 0
 offset_left = 19.0
-offset_top = 46.0
+offset_top = 51.0
 offset_right = 250.0
-offset_bottom = 88.0
+offset_bottom = 93.0
 text = "SCORE: 1234560"
 label_settings = SubResource("LabelSettings_2kudt")
 script = ExtResource("6_55kp7")
@@ -278,6 +307,7 @@ offset_right = -0.504089
 offset_bottom = -0.172028
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_1xho4")
 tab_alignment = 1
 
 [node name="Pause" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu/TabContainer"]
@@ -333,15 +363,15 @@ offset_right = 2.8
 offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 0
-text = "Exit Game"
+text = "Exit"
 
 [node name="MoneyLabel" type="Label" parent="Head/Eyes/PlayerUI/PauseMenu"]
 visible = false
 layout_mode = 0
-offset_left = 19.0
-offset_top = 90.0
-offset_right = 214.0
-offset_bottom = 132.0
+offset_left = 80.0
+offset_top = 133.0
+offset_right = 275.0
+offset_bottom = 175.0
 text = "MONEY: 1000"
 label_settings = SubResource("LabelSettings_2kudt")
 script = ExtResource("5_7d3dc")
@@ -370,6 +400,7 @@ offset_right = 225.0
 offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_1xho4")
 tab_alignment = 1
 
 [node name="Options" type="Label" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer"]
@@ -386,7 +417,7 @@ offset_right = -0.100012
 offset_bottom = -0.0880104
 
 [node name="Buttons" type="Control" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer"]
-custom_minimum_size = Vector2(450, 239)
+custom_minimum_size = Vector2(450, 280)
 layout_mode = 2
 
 [node name="HeadBob" type="CheckBox" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
@@ -416,9 +447,9 @@ text = "Close"
 [node name="SensitivitySlider" type="HSlider" parent="Head/Eyes/PlayerUI/OptionsMenu/TabContainer/Options/ScrollContainer/Buttons"]
 layout_mode = 0
 offset_left = 47.0
-offset_top = 82.0
+offset_top = 107.0
 offset_right = 160.0
-offset_bottom = 98.0
+offset_bottom = 123.0
 min_value = 0.01
 max_value = 0.1
 step = 0.005
@@ -451,10 +482,10 @@ text = "0.0
 
 [node name="TimerContainer" type="Control" parent="Head/Eyes/PlayerUI"]
 layout_mode = 1
-anchor_left = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.08
-offset_left = -0.552006
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.551971
 offset_right = 0.551971
 offset_bottom = 0.159996
 grow_horizontal = 2
@@ -465,10 +496,10 @@ time = 120.0
 layout_mode = 2
 anchor_left = 0.2
 anchor_right = 0.8
-offset_left = 218.691
-offset_top = 3.0
-offset_right = -137.691
-offset_bottom = 45.0
+offset_left = 197.651
+offset_top = 4.0
+offset_right = -104.651
+offset_bottom = 46.0
 grow_horizontal = 2
 text = "000"
 label_settings = SubResource("LabelSettings_euq3r")
@@ -478,12 +509,12 @@ horizontal_alignment = 2
 layout_mode = 2
 anchor_left = 0.2
 anchor_right = 0.8
-offset_left = 170.691
+offset_left = -31.6688
 offset_top = 3.0
-offset_right = -191.591
+offset_right = 16.6688
 offset_bottom = 45.0
 grow_horizontal = 2
-text = ".00"
+text = "00."
 label_settings = SubResource("LabelSettings_euq3r")
 horizontal_alignment = 2
 
@@ -496,7 +527,7 @@ offset_top = 3.0
 offset_right = -235.591
 offset_bottom = 45.0
 grow_horizontal = 2
-text = "00"
+text = "00."
 label_settings = SubResource("LabelSettings_euq3r")
 horizontal_alignment = 2
 
