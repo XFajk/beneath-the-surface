@@ -92,3 +92,7 @@ take={
 
 3d_physics/layer_1="physics_bodies"
 3d_physics/layer_2="picked_up_physics_bodies"
+
+[rendering]
+
+mesh_lod/lod_change/threshold_pixels=663.0
